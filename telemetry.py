@@ -81,7 +81,9 @@ class JsonTelemetry(Telemetry):
         self.orders: dict[str, dict[str, Any]] = {}
         self.missions: dict[str, dict[str, Any]] = {}
         self.completed_missions: list[dict[str, Any]] = []
-        self.archived_mission_ids: set[tuple[str, int]] = set()
+        self.archived_mission_ids: set[tuple[str, int | None]] = set()
+        self.events: list[dict[str, Any]] = []
+        self.recorded_event_count = 0
 
     def register_vehicle(self, vehicle) -> None:
         if not self.config.enabled or not self.config.vehicles:
@@ -121,14 +123,45 @@ class JsonTelemetry(Telemetry):
 
         key = (
             snapshot["id"],
-            snapshot["mission_number"],
+            snapshot.get("mission_number"),
         )
 
         if key in self.archived_mission_ids:
             return
 
         self.archived_mission_ids.add(key)
-        self.completed_missions.append(snapshot)
+        self.missions.pop(snapshot["id"], None)
+        self.completed_missions.append(dict(snapshot))
+
+    def record_v2_flight(self, flight, time: float) -> None:
+        """Record the active V2 mission, including ground loading."""
+        if not self.config.enabled or not self.config.missions:
+            return
+        executor = flight.executor
+        if executor is None:
+            return
+        mission = executor.mission
+        self.missions[mission.id] = {
+            "id": mission.id,
+            "vehicle_id": flight.vehicle.id,
+            "mission_number": flight.mission_number,
+            "status": mission.status.value,
+            "manager_state": flight.state.value,
+            "ground_phase": flight.ground_phase.value,
+            "order_ids": [o.id for o in flight.orders or []],
+            "delivered_orders": list(mission.delivered_orders),
+            "last_observed_at": time,
+        }
+
+    def record_v2_events(self, events: list[dict[str, Any]]) -> None:
+        """Append only newly observed events; source list is append-only."""
+        if not self.config.enabled:
+            return
+        if len(events) < self.recorded_event_count:
+            self.recorded_event_count = 0
+        if len(events) > self.recorded_event_count:
+            self.events.extend(dict(e) for e in events[self.recorded_event_count:])
+            self.recorded_event_count = len(events)
 
     def write(self, path: str | Path | None = None) -> None:
         if not self.config.enabled:
@@ -144,6 +177,7 @@ class JsonTelemetry(Telemetry):
                 self.completed_missions
                 + list(self.missions.values())
             ),
+            "events": self.events,
         }
 
         with output_path.open("w", encoding="utf-8") as file:
@@ -155,6 +189,8 @@ class JsonTelemetry(Telemetry):
         self.missions.clear()
         self.completed_missions.clear()
         self.archived_mission_ids.clear()
+        self.events.clear()
+        self.recorded_event_count = 0
         self.next_state_time = 0.0
 
 

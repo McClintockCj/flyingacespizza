@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-import random
+import math, random
 
 from contracts import DeliveryOrder, Scenario, Vector3
 
@@ -19,12 +19,14 @@ class OrderSpawner:
         interval_seconds: float = 30.0,
         max_active_orders: int = 5,
         rng: random.Random | None = None,
+        max_delivery_radius: float | None = None,
     ):
         self.interval = interval_seconds
         self.max_active_orders = max_active_orders
         self.timer = 0.0
         self.counter = 100
         self.rng = rng or random.Random()
+        self.max_delivery_radius = max_delivery_radius
 
     def _is_valid_location(
         self,
@@ -72,12 +74,28 @@ class OrderSpawner:
         margin = 3.0
 
         for _ in range(20):
-            rand_x = self.rng.uniform(x0 + margin, x1 - margin)
-            rand_y = self.rng.uniform(y0 + margin, y1 - margin)
+            if self.max_delivery_radius is not None:
+                angle = self.rng.uniform(0.0, 2.0 * math.pi)
+                radius = self.max_delivery_radius * math.sqrt(self.rng.random())
+
+                rand_x = scenario.base.x + radius * math.cos(angle)
+                rand_y = scenario.base.y + radius * math.sin(angle)
+            else:
+                rand_x = self.rng.uniform(x0 + margin, x1 - margin)
+                rand_y = self.rng.uniform(y0 + margin, y1 - margin)
+
+            if not (
+                x0 + margin <= rand_x <= x1 - margin
+                and y0 + margin <= rand_y <= y1 - margin
+            ):
+                continue
+
             candidate_pos = Vector3(rand_x, rand_y, 2.0)
 
             if not self._is_valid_location(candidate_pos, scenario):
                 continue
+
+            # Keep the existing order creation and append logic below.
 
             self.counter += 1
 

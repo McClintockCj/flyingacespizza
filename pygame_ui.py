@@ -68,7 +68,8 @@ class PygameUI:
         #                             search_step=10.0,)
         self.spawner = simulation.order_spawner
 
-        self.auto_dispatch = True  # Auto-Dispatch enabled by default
+        self.auto_dispatch = simulation.auto_dispatch
+        self.is_v2 = simulation.mission_engine == "v2"
 
         # self.map = MapData("maps/richmond_small_3.json")
         self.map = simulation.map
@@ -100,6 +101,9 @@ class PygameUI:
 
     def handle_events(self):
         for event in pygame.event.get():
+            if event.type == pygame.VIDEORESIZE:
+                self.screen_size = self.screen.get_size()
+                continue
             if event.type == pygame.QUIT:
                 self.running = False
                 return False
@@ -155,10 +159,16 @@ class PygameUI:
 
         # Adjust spawn interval with UP / DOWN arrows
         if key == pygame.K_UP:
+            if self.spawner is None:
+                self.log("Order spawning is disabled")
+                return
             self.spawner.interval = max(0.5, self.spawner.interval - 1.0)
             self.log(f"Spawn Interval: {self.spawner.interval:.1f}s")
             return
         elif key == pygame.K_DOWN:
+            if self.spawner is None:
+                self.log("Order spawning is disabled")
+                return
             self.spawner.interval += 1.0
             self.log(f"Spawn Interval: {self.spawner.interval:.1f}s")
             return
@@ -199,6 +209,9 @@ class PygameUI:
             self.editor.adjust_obstacle_height(-1.0)
 
     def handle_sim_key(self, key):
+        if self.is_v2 and key in (pygame.K_p, pygame.K_s, pygame.K_r, pygame.K_ESCAPE):
+            self.log("V2 manual mission controls are not implemented; use auto-dispatch (A)")
+            return
         if key == pygame.K_SPACE:
             if self.simulation.running:
                 self.simulation.stop()
@@ -218,7 +231,6 @@ class PygameUI:
             self.log("Mission aborted")
         elif key == pygame.K_n:
             self.simulation.reset()
-            self.mission_manager.reset()
             self.log("Simulation reset")
 
     def update(self, dt: float):
@@ -341,18 +353,30 @@ class PygameUI:
             pygame.draw.line(self.screen, (30, 100, 200), start, end, 2)
 
     def render_route(self):
-        for i, mission in enumerate(self.mission_manager.missions):
-            if (
-                mission.active_route 
-                and mission.state in (MissionState.EXECUTING, MissionState.READY, MissionState.RETURNING)
-            ):
-                points = [
-                    self.camera.world_to_screen(wp.position)
-                    for wp in mission.active_route.waypoints
-                ]
+        if self.is_v2:
+            for i, flight in enumerate(self.mission_manager.flights):
+                if flight.executor is None:
+                    continue
+                mission = flight.executor.mission
                 color = DRONE_COLORS[i % len(DRONE_COLORS)]
+                # Render the current and remaining planned legs.
+                for leg_index, leg in enumerate(mission.legs):
+                    if leg_index < mission.current_leg_index:
+                        continue
+                    points = [self.camera.world_to_screen(wp.position)
+                              for wp in leg.route.waypoints]
+                    if len(points) > 1:
+                        pygame.draw.lines(self.screen, color, False, points, 2)
+            return
+
+        for i, mission in enumerate(self.mission_manager.missions):
+            if (mission.active_route and mission.state in
+                    (MissionState.EXECUTING, MissionState.READY, MissionState.RETURNING)):
+                points = [self.camera.world_to_screen(wp.position)
+                          for wp in mission.active_route.waypoints]
                 if len(points) > 1:
-                    pygame.draw.lines(self.screen, color, False, points, 2)
+                    pygame.draw.lines(self.screen, DRONE_COLORS[i % len(DRONE_COLORS)],
+                                      False, points, 2)
 
     def render_toolbar(self):
         rect = pygame.Rect(0, 0, self.screen_size[0], 34)
@@ -372,10 +396,11 @@ class PygameUI:
         else:
             auto_str = "AUTO" if self.auto_dispatch else "MANUAL"
             text = (
-                f"Dispatch: [{auto_str}] (A) | Spawn: {self.spawner.interval:.1f}s (UP/DN) | "
-                f"[SPACE] pause  [P] plan  [S] start  [R] RTB  [N] reset"
+                f"Dispatch: [{auto_str}] (A) | Spawn: {self.spawner.interval:.1f}s (UP/DN) "
+                if self.spawner is not None else f"Dispatch: [{auto_str}] (A) | Spawn: OFF "
             )
 
+        text += "| [SPACE] pause  [N] reset" if self.is_v2 else "| [SPACE] pause  [P] plan  [S] start  [R] RTB  [N] reset"
         self.screen.blit(self.font.render(text, True, TEXT), (110, 8))
 
         help_hint = self.small_font.render(
@@ -385,25 +410,31 @@ class PygameUI:
 
     def render_hud(self):
         vehicle_states = self.simulation.get_snapshot().vehicles
-        missions: list[DroneMission] = self.mission_manager.missions
+        entries = (self.mission_manager.flights if self.is_v2
+                   else self.mission_manager.missions)
 
         row_h = 20
-        height = 34 + row_h * len(missions)
-        panel = pygame.Rect(10, self.screen_size[1] - height - 10, 420, height)
+        height = 34 + row_h * len(entries)
+        panel = pygame.Rect(10, self.screen.get_height() - height - 10, 470, height)
         pygame.draw.rect(self.screen, PANEL_BG, panel)
         pygame.draw.rect(self.screen, PANEL_BORDER, panel, 1)
 
-        pending_count = len([o for o in self.scenario_manager.get_scenario().orders if o.status == "pending"])
+        pending_count = sum(o.status == "pending" for o in self.simulation.scenario.orders)
         header = f"Orders Queue: {pending_count} pending | Click map to add order"
         self.screen.blit(self.small_font.render(header, True, TEXT), (18, panel.y + 8))
 
-        for i, (mission, state) in enumerate(zip(missions, vehicle_states)):
+        for i, (entry, state) in enumerate(zip(entries, vehicle_states)):
             color = DRONE_COLORS[i % len(DRONE_COLORS)]
-            batch = f"{len(mission.active_orders)} deliver(ies)" if mission.active_orders else "-"
-            text = (
-                f"{mission.vehicle.id}: {mission.state.value:<10} "
-                f"batt {state.battery.remaining_percent():5.1f}%   batch {batch}"
-            )
+            if self.is_v2:
+                phase = entry.ground_phase.value
+                status = phase if phase != "idle" else entry.state.value
+                batch_count = len(entry.orders or [])
+            else:
+                status = entry.state.value
+                batch_count = len(entry.active_orders)
+            label = getattr(entry.vehicle, "name", None) or entry.vehicle.id
+            text = (f"{label}: {status:<11} "
+                    f"batt {state.battery.remaining_percent():5.1f}%  batch {batch_count}")
             y = panel.y + 30 + i * row_h
             pygame.draw.circle(self.screen, color, (24, y + 8), 5)
             self.screen.blit(self.small_font.render(text, True, TEXT), (36, y))
@@ -432,6 +463,9 @@ class PygameUI:
             "TAB: toggle edit/sim   Middle-drag: pan   Wheel: zoom",
             "Ctrl+S / Ctrl+L: save / load scenario.json   H: toggle help",
         ]
+        if self.is_v2:
+            lines = [line for line in lines if not (line.startswith("SPACE: play/pause") or line.startswith("R: return"))]
+            lines.insert(lines.index("-- Always --"), "SPACE: play/pause   N: reset   V2 missions use auto-dispatch")
         panel = pygame.Rect(300, 140, 550, 30 + 22 * len(lines))
         pygame.draw.rect(self.screen, PANEL_BG, panel)
         pygame.draw.rect(self.screen, PANEL_BORDER, panel, 1)

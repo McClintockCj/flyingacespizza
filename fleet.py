@@ -5,7 +5,7 @@ import numpy as np
 from battery import Battery, ConstantRecharge, ConstantPowerDischarge, PayloadWindDischarge
 from contracts import Vector3, Wind
 from drone_config import DroneConfig
-from rotorpy_adapter import RotorPyVehicleAdapter
+from rotorpy_adapter_v2 import RotorPyVehicleAdapterV2
 
 from rotorpy.controllers.quadrotor_control import SE3Control
 from rotorpy.environments import Environment
@@ -93,7 +93,7 @@ def build_vehicle(
     wind: Wind,
     config: DroneConfig,
     vehicle_id: str,
-) -> RotorPyVehicleAdapter:
+) -> RotorPyVehicleAdapterV2:
     initial_state = {
         "x": np.array([home_position.x, home_position.y, home_position.z]),
         "v": np.zeros(3),
@@ -135,7 +135,7 @@ def build_vehicle(
         recharge_model=config.recharge_model_factory(),
     )
 
-    return RotorPyVehicleAdapter(
+    return RotorPyVehicleAdapterV2(
         rotorpy_vehicle=rotorpy_vehicle,
         rotorpy_environment=rotorpy_environment,
         rotorpy_controller=rotorpy_controller,
@@ -144,6 +144,7 @@ def build_vehicle(
         home_position=home_position,
         battery=battery,
         wind=wind,
+        sim_rate=50
     )
 
 
@@ -189,3 +190,17 @@ def build_diverse_fleet(
         configs=configs,
         spacing=spacing,
     )
+
+def build_fleet_v2(base: Vector3, wind: Wind, configs: list[DroneConfig], spacing: float = 1.5):
+    """Reuse the tested RotorPy factory, wrapping each vehicle with the V2 adapter."""
+    from rotorpy_adapter_v2 import RotorPyVehicleAdapterV2
+
+    legacy = build_fleet(base, wind, configs, spacing=spacing)
+    return [RotorPyVehicleAdapterV2(
+        rotorpy_vehicle=vehicle.vehicle,
+        rotorpy_environment=vehicle.environment,
+        rotorpy_controller=vehicle.controller,
+        config=config, vehicle_id=vehicle.id,
+        home_position=vehicle.home_position,
+        battery=vehicle.state.battery, wind=wind,
+    ) for vehicle, config in zip(legacy, configs)]

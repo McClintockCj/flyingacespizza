@@ -14,7 +14,7 @@ from contracts import (
     Vector3,
     Wind,
 )
-from fleet import build_diverse_fleet, build_fleet, get_drone_config
+from fleet import build_diverse_fleet, build_fleet, get_drone_config, build_fleet_v2
 from map_module import MapData
 from mission_manager import MissionManager
 from mission_planner import MissionPlanner
@@ -34,6 +34,7 @@ class Simulation(SimulationInterface):
         order_spawner: OrderSpawner | None = None,
         rng: random.Random | None = None,
         telemetry: Telemetry | None = None,
+        mission_engine: str = "legacy",
     ):
         self.vehicles = list(vehicles)
         self.environment = environment
@@ -42,6 +43,7 @@ class Simulation(SimulationInterface):
         self.order_spawner = order_spawner
         self.rng = rng or random.Random()
         self.telemetry = telemetry
+        self.mission_engine = mission_engine
 
         self.auto_dispatch = True
 
@@ -122,31 +124,36 @@ class Simulation(SimulationInterface):
 
         environment = ScenarioManager(scenario)
 
+        mission_engine = raw.get("mission_engine", "legacy")
+        if mission_engine not in ("legacy", "v2"):
+            raise ValueError(f"Unsupported mission_engine: {mission_engine}")
+
         fleet_config = raw.get("fleet", {})
         fleet_size = fleet_config.get("size", 5)
         config_names = fleet_config.get("configs")
 
         if config_names:
             configs = [get_drone_config(name) for name in config_names]
-            vehicles = build_fleet(
-                base=base,
-                wind=wind,
-                configs=configs,
+        else:
+            from fleet import DRONE_CONFIGS
+            configs = [DRONE_CONFIGS[i % len(DRONE_CONFIGS)] for i in range(fleet_size)]
+
+        if mission_engine == "v2":
+            from mission_manager_v2 import MissionManagerV2, GroundOperationsConfig
+            vehicles = build_fleet_v2(base=base, wind=wind, configs=configs)
+            ground = raw.get("ground_operations", {})
+            ground_config = GroundOperationsConfig(**ground)
+            planner = MissionPlanner(environment)
+            mission_manager = MissionManagerV2(
+                vehicles=vehicles, environment=environment, planner=planner,
+                ground_config=ground_config,
             )
         else:
-            vehicles = build_diverse_fleet(
-                base=base,
-                wind=wind,
-                fleet_size=fleet_size,
+            vehicles = build_fleet(base=base, wind=wind, configs=configs)
+            planner = MissionPlanner(environment)
+            mission_manager = MissionManager(
+                vehicles=vehicles, environment=environment, planner=planner,
             )
-
-        planner = MissionPlanner(environment)
-
-        mission_manager = MissionManager(
-            vehicles=vehicles,
-            environment=environment,
-            planner=planner,
-        )
 
         spawning = raw.get("spawning")
 
@@ -164,6 +171,7 @@ class Simulation(SimulationInterface):
                 interval_seconds=spawning.get("interval", 15.0),
                 max_active_orders=spawning.get("max_active_orders", 5),
                 rng=rng,
+                max_delivery_radius=spawning.get("max_delivery_radius"),
             )
 
         telemetry_data = raw.get("telemetry")
@@ -191,6 +199,7 @@ class Simulation(SimulationInterface):
             order_spawner=order_spawner,
             rng=rng,
             telemetry=telemetry,
+            mission_engine=mission_engine,
         )
 
         return simulation
@@ -206,53 +215,51 @@ class Simulation(SimulationInterface):
     def add_order(self, order: DeliveryOrder) -> None:
         self.mission_manager.add_order(order)
 
-    # def advance(self, dt: float) -> None:
-    #     if not self.running:
-    #         return
-
-    #     if dt <= 0:
-    #         return
-
-    #     for vehicle in self.vehicles:
-    #         vehicle.advance(dt)
-
-    #     if self.order_spawner is not None:
-    #         self.order_spawner.update(dt, self.scenario)
-
-    #     if self.auto_dispatch:
-    #         self.mission_manager.update(dt)
-
-    #     self.time += dt
     def advance(self, dt: float) -> None:
-        if not self.running:
+        if not self.running or dt <= 0:
             return
 
-        if dt <= 0:
-            return
-
-        for vehicle in self.vehicles:
-            vehicle.advance(dt)
+        next_time = self.time + dt
+        if self.mission_engine == "legacy":
+            for vehicle in self.vehicles:
+                vehicle.advance(dt)
 
         if self.order_spawner is not None:
-            self.order_spawner.update(dt, self.scenario, self.time + dt)
+            self.order_spawner.update(dt, self.scenario, next_time)
 
-        if self.auto_dispatch:
-            self.mission_manager.update(dt, self.time + dt)
+        if self.mission_engine == "v2":
+            # V2 manager owns all vehicle physics and ground operations.
+            self.mission_manager.update(dt, next_time, auto_dispatch=self.auto_dispatch)
+        elif self.auto_dispatch:
+            self.mission_manager.update(dt, next_time)
 
-        self.time += dt
-
+        self.time = next_time
         if self.telemetry is not None:
             self.telemetry.sample(self.time, self.vehicles)
-
             for order in self.scenario.orders:
                 self.telemetry.record_order(order)
+            if self.mission_engine == "legacy":
+                for mission in self.mission_manager.missions:
+                    self.telemetry.record_mission(mission)
+                for mission in self.mission_manager.completed_missions:
+                    self.telemetry.record_mission_snapshot(mission)
+            else:
+                self._record_v2_telemetry()
 
-            for mission in self.mission_manager.missions:
-                self.telemetry.record_mission(mission)
+    def _record_v2_telemetry(self) -> None:
+        """Sync V2 mission lifecycle into telemetry without touching legacy behavior."""
+        if self.telemetry is None or self.mission_engine != "v2":
+            return
+        telemetry = self.telemetry
+        manager = self.mission_manager
+        # Snapshot active missions first, then archive completed missions.
+        # This prevents an active snapshot from replacing a terminal record.
+        for flight in manager.flights:
+            telemetry.record_v2_flight(flight, self.time)
+        for mission in manager.completed_missions:
+            telemetry.record_mission_snapshot(mission)
+        telemetry.record_v2_events(manager.events)
 
-            for mission in self.mission_manager.completed_missions:
-                self.telemetry.record_mission_snapshot(mission)
-    
     def run(self, dt: float = 0.1) -> None:
         self.start()
 
@@ -269,8 +276,9 @@ class Simulation(SimulationInterface):
     def reset(self) -> None:
         self.time = 0.0
 
-        for vehicle in self.vehicles:
-            vehicle.reset()
+        if self.mission_engine == "legacy":
+            for vehicle in self.vehicles:
+                vehicle.reset()
 
         self.mission_manager.reset()
 
@@ -291,11 +299,14 @@ class Simulation(SimulationInterface):
             for order in self.scenario.orders:
                 self.telemetry.record_order(order)
 
-            for mission in self.mission_manager.missions:
-                self.telemetry.record_mission(mission)
+            if self.mission_engine == "legacy":
+                for mission in self.mission_manager.missions:
+                    self.telemetry.record_mission(mission)
 
     def stop(self) -> None:
         self.running = False
 
         if self.telemetry is not None:
+            if self.mission_engine == "v2":
+                self._record_v2_telemetry()
             self.telemetry.write()

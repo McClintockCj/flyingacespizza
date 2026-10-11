@@ -256,6 +256,16 @@ class Battery:
 
         return energy_wh
 
+    def discharge_power(self, dt: float, power_w: float) -> float:
+        """Consume energy using an externally estimated electrical power (watts)."""
+        if dt <= 0 or self.remaining_wh <= 0:
+            return 0.0
+        if power_w < 0:
+            raise ValueError("power_w cannot be negative")
+        consumed = min(power_w * dt / 3600.0, self.remaining_wh)
+        self.remaining_wh -= consumed
+        return consumed
+
     def estimate_energy(
         self,
         distance: float,
