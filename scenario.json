@@ -7,15 +7,12 @@
     "z": 0.0
   },
   "fleet": {
-    "configs_old": [
+    "configs": [
       "Light",
       "Standard",
       "Heavy",
       "Fast",
       "Endurance"
-    ],
-    "configs": [
-      "Fast"
     ]
   },
   "orders": [],
@@ -23,7 +20,7 @@
     "type": "interval",
     "interval": 15.0,
     "max_active_orders": 15,
-    "max_delivery_radius": 300.0
+    "max_delivery_radius": 1500.0
   },
   "telemetry": {
     "enabled": true,

@@ -1,383 +1,220 @@
 # Flying Aces Pizza Delivery Simulator
 
-A UAV delivery simulation for experimenting with autonomous drone fleet operations, mission planning, vehicle simulation, and delivery logistics in a real-world map environment.
+A scenario-driven UAV pizza delivery simulator for exploring **systems engineering**, autonomous fleet operations, mission planning, energy constraints, and vehicle behavior. It combines a real-world map, high-level delivery operations, and multirotor simulation through [RotorPy](https://github.com/ethz-asl/rotorpy).
 
-The simulator models a fleet of delivery drones operating from a common base. Orders are generated over time or created interactively, grouped into missions, assigned to available drones, and flown through a simulated environment using [RotorPy](https://github.com/ethz-asl/rotorpy).
+The project is designed for learning and experimentation: change fleet configurations, demand, wind, and operating conditions; observe the resulting missions; and analyze telemetry from interactive or headless runs. It is a simulation and teaching tool, **not flight-ready autonomy software**.
 
-## Setup
+## What it does
 
-1. Clone the repo
-2. Install Python 3.13 or newer
-3. Setup virtual environment. `python -m venv venv`
-4. Activate the venv with `venv/Scripts/activate` or linux equivalent.
-5. Install dependencies. `pip install -r requirements.txt`
-6. Run the simulator. `python main.py scenario.json`
-7. For headless runs, `python main.py scenario.json --headless [--duration <seconds> | --missions <int> | --output PATH]`
+- Simulates a fleet of drones with distinct configurations, names, payload capacities, cruise speeds, and batteries.
+- Generates orders procedurally and allows interactive order placement.
+- Groups eligible orders into delivery missions, plans obstacle-aware routes, and dispatches available vehicles.
+- Executes successive flight legs, including delivery stops and a return to each vehicle's home location, using RotorPy dynamics and control.
+- Models battery discharge, charging, payload changes, and mission energy-feasibility checks.
+- Displays maps, vehicles, routes, orders, flight status, and battery information in a Pygame interface.
+- Supports headless experiments and exports vehicle, mission, and order telemetry.
+- Provides scenario editing and save/load functionality, with editor expansion under development.
 
-Note that duration is seconds of simulated time.
+**Current limitations:** Manual abort and return-to-base behavior are still being refined. Battery and wind-energy models are empirical approximations rather than calibrated aircraft power models. The scenario editor is undergoing redesign; no-fly-zone and preferred-corridor authoring should not yet be treated as completed features.
 
-## Current Features
+## Requirements
 
-* Multi-drone fleet simulation
-* Multiple drone configurations with named vehicle types
-* Battery/energy simulation
-* Automatic mission dispatch
-* Batched delivery missions
-* Delivery detection and mission completion
-* Return-to-base behavior
-* Drone recharging
-* Mission abort/reset handling
-* Procedural order spawning
-* Interactive order creation by clicking the map
-* Real-world map data loaded from JSON
-* Building geometry used as flight obstacles
-* Route visualization
-* Interactive pan and zoom
-* Wind visualization
-* Per-drone telemetry and mission state in the HUD
-* Scenario editing and saving/loading
-* 3D drone dynamics and control through RotorPy
+- **Python 3.13** (use the project's tested version rather than assuming newer Python releases are compatible)
+- `pip` and `venv`
+- Dependencies from the repository's `requirements.txt`, including Pygame, NumPy, and RotorPy where specified
+- A scenario JSON file and referenced map JSON assets
 
-## Architecture
+## Installation
 
-The simulator is divided into several major systems.
-
-```text
-Scenario
-   │
-   ├── Fleet
-   ├── Map / Obstacles
-   ├── Order Spawning
-   ├── Weather / Events
-   └── Configuration
-          │
-          ▼
-     Mission Manager
-          │
-          ├── Mission Planning
-          ├── Mission State
-          ├── Fleet Assignment
-          └── Delivery Management
-                    │
-                    ▼
-                Drone
-                    │
-                    ├── Vehicle Dynamics
-                    ├── Battery
-                    └── Telemetry
-                         │
-                         ▼
-                    RotorPy
-```
-
-The visualization layer operates independently of the core simulation logic:
-
-```text
-                 Simulation
-                     │
-        ┌────────────┼────────────┐
-        ▼            ▼            ▼
-      Map          Drones       Missions
-        │            │            │
-        └────────────┼────────────┘
-                     ▼
-                  Pygame
-```
-
-### Scenario
-
-The scenario defines the environment in which the simulation runs. It brings together the map, fleet, orders, and simulation configuration.
-
-The scenario system is intended to make different experiments reproducible without hard-coding the experiment directly into the UI.
-
-### Map
-
-`MapData` loads the map from JSON and provides the simulation with:
-
-* Building geometry
-* Roads and other map features
-* Parks/green areas
-* Water
-* Delivery locations
-* Obstacle geometry
-* Map bounds
-
-The map also handles the coordinate transformation between the source map representation and the simulator's coordinate system.
-
-The renderer uses the same map data as the simulation, so the displayed environment and the environment used for obstacle-aware planning remain aligned.
-
-### Camera
-
-`Camera` handles the visualization coordinate system, including:
-
-* Pan
-* Zoom
-* Screen/world coordinate conversion
-* Fitting the map to the display
-
-The camera is independent of the map and simulation state.
-
-### Orders
-
-Orders represent delivery requests.
-
-Orders can currently be generated automatically through an `OrderSpawner` or created interactively by clicking on the map.
-
-An order contains a delivery location and becomes eligible for mission planning when it enters the pending order queue.
-
-### Mission Manager
-
-`MissionManager` coordinates the fleet and manages the lifecycle of missions.
-
-It is responsible for:
-
-* Tracking available drones
-* Receiving pending orders
-* Grouping orders into delivery batches
-* Planning missions
-* Dispatching drones
-* Tracking mission state
-* Detecting deliveries
-* Returning drones to base
-* Managing recharge behavior
-* Handling mission aborts and resets
-
-The mission manager provides the main boundary between the high-level delivery system and individual drone simulation.
-
-### Mission Planning
-
-The mission planner determines how orders are grouped and how a drone should service them.
-
-A mission may contain multiple deliveries, subject to the configured drone payload capacity and mission constraints.
-
-Routes are represented in the simulation and rendered visually so that mission behavior can be inspected while the simulation is running.
-
-### Drones
-
-Each drone is represented by a vehicle configuration and runtime state.
-
-Drone configurations define properties such as:
-
-* Vehicle name
-* Payload capacity
-* Battery characteristics
-* Vehicle dynamics parameters
-* RotorPy configuration
-
-Vehicle names are exposed to the simulation HUD. For example, multiple configurations can produce mission identities such as:
-
-```text
-Light-1
-Endurance-1
-Endurance-2
-```
-
-This makes it possible to distinguish vehicles in both telemetry and visualization.
-
-### RotorPy
-
-RotorPy provides the low-level multirotor simulation.
-
-The simulator uses RotorPy for vehicle dynamics and control rather than implementing its own flight dynamics model.
-
-The high-level simulation determines **what the drone should do**, while RotorPy handles **how the vehicle physically responds**.
-
-### Telemetry
-
-Telemetry is collected from the simulated drones and exposed to the visualization layer.
-
-The HUD currently displays information including:
-
-* Drone/mission identity
-* Mission state
-* Battery remaining
-* Current delivery batch
-* Pending orders
-
-This allows the simulation to be observed without inspecting the underlying simulation state directly.
-
-## User Interface
-
-The simulator runs as an interactive Pygame application.
-
-### Main Controls
-
-| Control           | Function                                  |
-| ----------------- | ----------------------------------------- |
-| `A`               | Toggle automatic dispatch                 |
-| `↑` / `↓`         | Increase/decrease order spawning interval |
-| `SPACE`           | Pause/resume simulation                   |
-| `P`               | Pause simulation                          |
-| `S`               | Resume simulation                         |
-| `R`               | Reset simulation                          |
-| `ESC`             | Exit                                      |
-| `N`               | Create a new/reset scenario state         |
-| `TAB`             | Toggle simulation/editor mode             |
-| `H`               | Toggle help                               |
-| Middle mouse drag | Pan map                                   |
-| Mouse wheel       | Zoom                                      |
-| `Ctrl+S`          | Save scenario                             |
-| `Ctrl+L`          | Load scenario                             |
-| Left click        | Create a delivery order                   |
-
-Some controls are mode-dependent.
-
-## Map Data
-
-Maps are stored as JSON files under `maps/`.
-
-The current simulator uses:
-
-```text
-maps/richmond.json
-```
-
-Map coordinates are represented in a local projected coordinate system rather than latitude/longitude. This allows the simulation to work directly in metric world coordinates.
-
-The map contains both visual features and geometry used by the simulation.
-
-A typical map contains layers such as:
-
-```text
-buildings
-roads
-parks
-water
-delivery_locations
-flight_corridors
-no_fly_zones
-```
-
-Building geometry is particularly important because it provides obstacle information for flight planning.
-
-## Running the Simulator
-
-From the project directory:
+Clone the repository and change into its root directory (the directory containing `main.py` and `requirements.txt`).
 
 ```bash
-python main.py
+git clone <repository-url>
+cd <repository-directory>
 ```
 
-The simulator loads the configured scenario and map and opens the Pygame visualization.
+Create a Python 3.13 virtual environment:
 
-The current default configuration includes a small multi-drone fleet, a delivery base, order spawning, and automatic dispatch.
+**Windows (PowerShell):**
 
-## Standalone Map Generation
+```powershell
+py -3.13 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
 
-The project also contains tooling for generating map data from real-world geographic sources.
+**Windows (Command Prompt):**
 
-A map can be generated with:
+```bat
+py -3.13 -m venv .venv
+.venv\Scripts\activate.bat
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+**Linux / macOS:**
 
 ```bash
-python -m map_tools.map_builder --place "601 W Main St, Richmond, Virginia, USA" --diameter-miles 3 --output maps/richmond.json
+python3.13 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
 ```
 
-The standalone map viewer can be launched with:
+Verify your interpreter and dependencies:
 
 ```bash
-python map_viewer.py maps/richmond.json
+python --version
+python -m pip check
 ```
 
-The generated map is intended to be consumed by the simulator at runtime rather than converted into a pre-rendered image.
+> If activation is blocked by your shell policy, run the environment's Python directly (`.venv\Scripts\python.exe` on Windows or `.venv/bin/python` on Linux/macOS). Do not install project dependencies into an unrelated Python environment.
 
-## Project Structure
+## Running
 
-The exact structure may evolve, but the major modules currently have these responsibilities:
+From the repository root:
+
+```bash
+python main.py scenario.json
+```
+
+Run an experiment without opening the UI:
+
+```bash
+python main.py scenario.json --headless --duration 120
+```
+
+The duration is measured in **simulated seconds**, not wall-clock seconds. Depending on the CLI version, additional arguments may include `--missions` for a mission-based termination condition and `--output` for telemetry output:
+
+```bash
+python main.py --help
+```
+
+Use `--help` as the definitive source for the installed version's options. Keep `scenario.json` and the `maps/` resources referenced by the scenario at their expected paths.
+
+## Module overview
+
+The package layout following the reorganization is:
 
 ```text
-flyingacespizza/
-│
-├── pygame_ui.py          # Interactive Pygame application
-├── scenario.py           # Scenario configuration/state
-├── contracts.py          # Shared simulation data structures
-├── mission_manager.py    # Fleet and mission lifecycle
-├── mission_planner.py    # Delivery mission planning
-├── drone.py              # Drone runtime behavior
-├── drone_config.py       # Vehicle configurations
-├── order_spawner.py      # Automatic order generation
-├── editor.py             # Scenario editing
-├── camera.py             # Map camera and transforms
-├── map_module.py         # Map loading, geometry and rendering
-│
-├── maps/
-│   └── richmond.json     # Current simulation map
-│
-└── map_tools/
-    └── map_builder.py    # Geographic map generation
+project-root/
+├── main.py                       # Thin entry point
+├── scenario.json                 # Scenario configuration (project asset)
+├── maps/                         # Generated map JSON files (project assets)
+├── requirements.txt              # Python dependencies
+└── flying_aces/
+    ├── cli.py                    # CLI argument parsing and run modes
+    ├── simulation.py             # Main simulation orchestration
+    ├── telemetry.py              # Telemetry collection and export
+    ├── core/
+    │   └── contracts.py          # Shared types, states, and interfaces
+    ├── aircraft/                 # Drone configs, fleet, battery, trajectory,
+    │                             # and RotorPy vehicle adapter
+    ├── missions/                 # Mission planner, executor, manager,
+    │                             # and energy feasibility
+    ├── world/                    # Scenario manager, map manager,
+    │                             # and order spawning
+    └── ui/                       # Simulator UI, camera, and scenario editor
 ```
 
-Additional modules support RotorPy integration, telemetry, vehicle control, and simulation-specific behavior.
+The exact filenames inside each subpackage should be checked against your branch. In particular, the map component was renamed to **MapManager** and the interface to **SimulatorUI** after the initial package reorganization.
 
-## Simulation Loop
+### Responsibilities
 
-At a high level, each simulation update follows this pattern:
+| Subsystem | Responsibility |
+| --- | --- |
+| Core contracts | Shared domain objects and interfaces: positions, orders, wind, state, and routes |
+| Aircraft | Drone configuration, RotorPy integration, trajectory tracking, battery accounting, and fleet construction |
+| Missions | Order batching, route planning, landing legs, delivery execution, mission state transitions, and energy checks |
+| World | Loading scenario assets, map geometry, obstacle information, environmental conditions, and order spawning |
+| Simulation | Coordinating time advancement, mission operations, world events, and telemetry |
+| UI | Rendering the map and operational state, processing user input, and editing scenarios |
+| Telemetry | Recording aircraft and mission information for inspection and repeatable experiments |
+| CLI | Starting interactive or headless runs with experiment arguments |
+
+### How the systems work together
 
 ```text
-1. Update scenario/events
-        ↓
-2. Generate new orders
-        ↓
-3. Update mission manager
-        ↓
-4. Plan/dispatch missions
-        ↓
-5. Update drone simulation
-        ↓
-6. Update mission and delivery state
-        ↓
-7. Update telemetry
-        ↓
-8. Render current state
+Scenario + map + fleet + orders + wind
+                  |
+                  v
+           Simulation loop
+                  |
+           Mission manager
+           /      |       \
+      Planner  Executor  Energy policy
+                  |
+          RotorPy adapter
+            /          \
+       Dynamics      Battery
+                  |
+            State + events
+             /         \
+       Pygame UI    Telemetry
 ```
 
-The important distinction is that **mission logic and visualization are separate**. The Pygame UI observes and interacts with the simulation but is not responsible for implementing the underlying delivery logic.
+**Planning** decides what each aircraft is supposed to accomplish; **execution** manages delivery-leg progression; **RotorPy** advances its physical vehicle state. The UI observes and controls the simulation rather than serving as its execution engine.
 
-## Current Scope
+## Interactive controls
 
-The simulator is currently focused on the operational behavior of a small UAV delivery fleet:
+Controls depend on whether the simulator is in simulation or editor mode. The following describes the principal controls from the project's recent UI versions; confirm the final key bindings in `flying_aces/ui/simulator_ui.py`.
 
-* Where should drones go?
-* Which orders should be combined?
-* When should a drone be dispatched?
-* How does battery state affect a mission?
-* What happens when a delivery is completed?
-* How does the fleet recover and recharge?
-* How does the simulated vehicle behave while executing the mission?
+| Control | Function |
+| --- | --- |
+| `H` | Toggle on-screen help |
+| `Tab` | Switch between simulation and editor modes |
+| `A` | Toggle automatic mission dispatch |
+| `Space` | Pause/resume simulation |
+| `P` | Plan or preview a mission (version-dependent) |
+| `S` | Start/dispatch a mission (version-dependent) |
+| `R` | Request return to base; behavior under refinement |
+| `Esc` | Abort an active mission; behavior under refinement |
+| `N` | Reset simulation/scenario state |
+| `Up` / `Down` | Adjust automatic order-spawning interval |
+| Mouse wheel | Zoom map |
+| Middle-button drag | Pan map |
+| Left click | Place an order or apply the selected editor tool, depending on mode |
+| `Ctrl+S` / `Ctrl+L` | Save/load scenario where enabled |
 
-The simulator is **not currently an autonomous testing system**. Its purpose is to provide a controllable environment for experimenting with fleet behavior, mission planning, vehicle simulation, and visualization.
+Use the built-in `H` help display when running an interactive session. The editor is being redesigned to emphasize **home bases, wind, no-fly zones, and optionally preferred flight corridors**, rather than manually placing building obstacles already imported from map data.
 
-## Development Direction
+## Maps and scenarios
 
-The architecture is being developed toward a more general scenario-driven simulation in which the simulation itself can be run independently of the Pygame interface.
+Maps are represented as JSON and use a local metric coordinate system suitable for simulation. Geographic data can describe buildings, roads, green space, and water; building geometry is also used for obstacle-aware routing. Scenarios provide a controlled way to configure a world, its fleet, and operating conditions.
 
-The intended separation is:
+Keep generated maps separate from scenario-specific controls and orders. This allows the same geography to support many experiments without modifying the underlying map data.
+
+The project has also used standalone OpenStreetMap processing tools to produce map JSON. Those tools may live outside the main `flying_aces` package; consult the map pipeline in your checked-out repository before using it.
+
+## Batteries and energy feasibility
+
+Battery capacity and remaining charge are expressed in **watt-hours (Wh)**. Discharge models estimate electrical power in **watts (W)**, and energy consumption is computed as:
 
 ```text
-Scenario
-   │
-   ├── Events / Weather
-   ├── Order Spawning Strategies
-   ├── Fleet
-   ├── Map
-   └── Configuration
-          │
-          ▼
-      Simulation
-          │
-          ├── Mission Management
-          ├── Mission Planning
-          ├── Drone Simulation
-          └── Telemetry
-          
-          │
-          ▼
-     Visualization
-          │
-          ├── Map
-          ├── Drones
-          ├── Routes
-          ├── Orders
-          └── HUD
+energy_wh = power_w * elapsed_seconds / 3600
 ```
 
-This separation will allow the same simulation to eventually run headlessly for experiments, evaluation, and batch scenarios while retaining Pygame as an interactive visualization and debugging interface.
+Available models include constant-power discharge, payload/wind-sensitive discharge, and constant-power recharge. Mission feasibility evaluates the planned flight legs, estimated energy, a safety multiplier, and a reserve requirement before dispatching work. Directional wind adjustments distinguish headwind, crosswind, and tailwind in the newer estimator.
+
+These are **simulation policy models**. They are useful for comparative experiments, but have not been calibrated against measured multirotor electrical consumption. In particular, trajectory-duration estimates may omit extra flight time due to settling, hover, or control response. Predicted and actual mission energy should therefore be compared using telemetry.
+
+## Telemetry and experiments
+
+Telemetry supports inspection of fleet activity and comparative experiments. Depending on configuration, the output can include vehicle positions and velocities, battery energy and percentage, order states, mission execution events, completed mission records, and faults.
+
+Good introductory experiments include varying payload, wind, order arrival rate, fleet composition, and battery capacity while holding other scenario variables constant. Collect and compare deliveries completed, energy consumed, mission duration, failed missions, and recharge downtime.
+
+For reproducibility, record the scenario file, software revision, random seed (when supported), and run arguments with experimental results.
+
+## Development priorities
+
+1. Make normal RTB, manual abort, and emergency recovery clearly defined and testable.
+2. Compare actual versus estimated mission energy and include hover/settling allowances.
+3. Redesign scenario editing around home locations, wind, no-fly zones, and optional corridors.
+4. Add automated tests for mission lifecycle, energy conservation, payload changes, and order requeueing.
+5. Expand experiment reporting and reproducibility controls.
+
+## Scope
+
+Flying Aces is intended to support systems engineering education, simulation-driven experimentation, and prototyping of UAV delivery logistics. It does not model every flight-safety consideration and must not be used as an operational flight-control or airworthiness system.
