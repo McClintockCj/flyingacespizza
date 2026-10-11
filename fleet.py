@@ -144,7 +144,7 @@ def build_vehicle(
         home_position=home_position,
         battery=battery,
         wind=wind,
-        sim_rate=50
+        sim_rate=100
     )
 
 

@@ -7,12 +7,15 @@
     "z": 0.0
   },
   "fleet": {
-    "configs": [
+    "configs_old": [
       "Light",
       "Standard",
       "Heavy",
       "Fast",
       "Endurance"
+    ],
+    "configs": [
+      "Fast"
     ]
   },
   "orders": [],

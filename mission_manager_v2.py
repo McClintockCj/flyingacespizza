@@ -10,7 +10,7 @@ from enum import Enum
 
 from contracts import DeliveryOrder, MissionState, Vector3
 from mission_v2 import MissionExecutorV2, MissionStatus
-from mission_planner_v2 import MissionPlannerV2
+from mission_planner import MissionPlanner
 from rotorpy_adapter_v2 import RotorPyVehicleAdapterV2
 from energy_feasibility_v2 import EnergyPolicyV2, estimate_mission_energy
 
@@ -55,7 +55,10 @@ class MissionManagerV2:
                  energy_policy: EnergyPolicyV2 | None = None):
         self.environment = environment
         self.planner = planner
-        self.leg_planner = MissionPlannerV2(planner, landing_height, cruise_height, speed)
+        self.leg_planner = planner
+        self.leg_planner.landing_height = landing_height
+        self.leg_planner.cruise_height = cruise_height
+        self.leg_planner.speed = speed
         self.flights = [ActiveFlight(vehicle=v) for v in vehicles]
         self.completed_missions: list[dict] = []
         self.events: list[dict] = []

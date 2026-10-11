@@ -7,7 +7,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 import math
 from contracts import Vector3
-from rotorpy_adapter_v2 import SmoothRouteTrajectory
+from trajectory import SmoothRouteTrajectory
 
 
 @dataclass(frozen=True)
