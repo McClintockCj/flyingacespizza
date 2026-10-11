@@ -29,8 +29,8 @@ The project is designed for learning and experimentation: change fleet configura
 Clone the repository and change into its root directory (the directory containing `main.py` and `requirements.txt`).
 
 ```bash
-git clone <repository-url>
-cd <repository-directory>
+git clone git@github.com:acthecoder23/flyingacespizza.git
+cd flyingacespizza
 ```
 
 Create a Python 3.13 virtual environment:
