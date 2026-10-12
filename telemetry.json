@@ -19,9 +19,9 @@
             "z": 2.0
           },
           "velocity": {
-            "x": 0,
-            "y": 0,
-            "z": 0
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
           },
           "battery": {
             "remaining_wh": 100.0,
@@ -30,90 +30,29 @@
           },
           "payload_weight": 0.0,
           "state": "landed",
+          "route_status": "idle",
           "fault": null
         },
         {
-          "time": 5.013000000000004,
+          "time": 5.011000000000003,
           "position": {
-            "x": -42.06041654982453,
-            "y": 23.00358579994082,
+            "x": 0.0,
+            "y": 0.0,
             "z": 2.0
           },
           "velocity": {
-            "x": -10.528264468041217,
-            "y": 5.758094067569653,
+            "x": 0.0,
+            "y": 0.0,
             "z": 0.0
           },
           "battery": {
-            "remaining_wh": 99.83287500000054,
+            "remaining_wh": 100.0,
             "capacity_wh": 100.0,
-            "remaining_percent": 99.83287500000054
+            "remaining_percent": 100.0
           },
           "payload_weight": 0.0,
-          "state": "flying",
-          "fault": null
-        },
-        {
-          "time": 10.002000000000008,
-          "position": {
-            "x": -94.58592798088137,
-            "y": 51.730717103045585,
-            "z": 2.0
-          },
-          "velocity": {
-            "x": -10.528264468041217,
-            "y": 5.7580940675696475,
-            "z": 0.0
-          },
-          "battery": {
-            "remaining_wh": 99.62500000000094,
-            "capacity_wh": 100.0,
-            "remaining_percent": 99.62500000000094
-          },
-          "payload_weight": 0.0,
-          "state": "flying",
-          "fault": null
-        },
-        {
-          "time": 15.007999999999935,
-          "position": {
-            "x": -147.29041990789466,
-            "y": 80.5557360052988,
-            "z": 2.0
-          },
-          "velocity": {
-            "x": -10.52826446804122,
-            "y": 5.758094067569647,
-            "z": 0.0
-          },
-          "battery": {
-            "remaining_wh": 99.41641666666811,
-            "capacity_wh": 100.0,
-            "remaining_percent": 99.41641666666811
-          },
-          "payload_weight": 0.0,
-          "state": "flying",
-          "fault": null
-        },
-        {
-          "time": 20.01399999999966,
-          "position": {
-            "x": -199.99491183490755,
-            "y": 109.38075490755185,
-            "z": 2.0
-          },
-          "velocity": {
-            "x": -10.528264468041222,
-            "y": 5.758094067569642,
-            "z": 0.0
-          },
-          "battery": {
-            "remaining_wh": 99.20783333333526,
-            "capacity_wh": 100.0,
-            "remaining_percent": 99.20783333333526
-          },
-          "payload_weight": 0.0,
-          "state": "flying",
+          "state": "landed",
+          "route_status": "idle",
           "fault": null
         }
       ]
@@ -137,9 +76,9 @@
             "z": 2.0
           },
           "velocity": {
-            "x": 0,
-            "y": 0,
-            "z": 0
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
           },
           "battery": {
             "remaining_wh": 100.0,
@@ -148,90 +87,29 @@
           },
           "payload_weight": 0.0,
           "state": "landed",
+          "route_status": "idle",
           "fault": null
         },
         {
-          "time": 5.013000000000004,
+          "time": 5.011000000000003,
           "position": {
-            "x": 46.19280426313503,
-            "y": -1.4087129221756995,
+            "x": 1.5,
+            "y": 0.0,
             "z": 2.0
           },
           "velocity": {
-            "x": 14.992554264721559,
-            "y": -0.47256387862317883,
+            "x": 0.0,
+            "y": 0.0,
             "z": 0.0
           },
           "battery": {
-            "remaining_wh": 99.8501000000002,
+            "remaining_wh": 100.0,
             "capacity_wh": 100.0,
-            "remaining_percent": 99.8501000000002
+            "remaining_percent": 100.0
           },
           "payload_weight": 0.0,
-          "state": "flying",
-          "fault": null
-        },
-        {
-          "time": 10.002000000000008,
-          "position": {
-            "x": 120.99065748983111,
-            "y": -3.766334112626756,
-            "z": 2.0
-          },
-          "velocity": {
-            "x": 14.99255426472156,
-            "y": -0.4725638786231787,
-            "z": 0.0
-          },
-          "battery": {
-            "remaining_wh": 99.60065000000044,
-            "capacity_wh": 100.0,
-            "remaining_percent": 99.60065000000044
-          },
-          "payload_weight": 0.0,
-          "state": "flying",
-          "fault": null
-        },
-        {
-          "time": 15.007999999999935,
-          "position": {
-            "x": 196.04338413902357,
-            "y": -6.131988889014286,
-            "z": 2.0
-          },
-          "velocity": {
-            "x": 14.99255426472156,
-            "y": -0.47256387862317834,
-            "z": 0.0
-          },
-          "battery": {
-            "remaining_wh": 99.35035000000069,
-            "capacity_wh": 100.0,
-            "remaining_percent": 99.35035000000069
-          },
-          "payload_weight": 0.0,
-          "state": "flying",
-          "fault": null
-        },
-        {
-          "time": 20.01399999999966,
-          "position": {
-            "x": 271.09611078821735,
-            "y": -8.497643665401835,
-            "z": 2.0
-          },
-          "velocity": {
-            "x": 14.99255426472156,
-            "y": -0.4725638786231785,
-            "z": 0.0
-          },
-          "battery": {
-            "remaining_wh": 99.10005000000096,
-            "capacity_wh": 100.0,
-            "remaining_percent": 99.10005000000096
-          },
-          "payload_weight": 0.0,
-          "state": "flying",
+          "state": "landed",
+          "route_status": "idle",
           "fault": null
         }
       ]
@@ -255,9 +133,9 @@
             "z": 2.0
           },
           "velocity": {
-            "x": 0,
-            "y": 0,
-            "z": 0
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
           },
           "battery": {
             "remaining_wh": 150.0,
@@ -266,19 +144,20 @@
           },
           "payload_weight": 0.0,
           "state": "landed",
+          "route_status": "idle",
           "fault": null
         },
         {
-          "time": 5.013000000000004,
+          "time": 5.011000000000003,
           "position": {
             "x": 3.0,
             "y": 0.0,
             "z": 2.0
           },
           "velocity": {
-            "x": 0,
-            "y": 0,
-            "z": 0
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
           },
           "battery": {
             "remaining_wh": 150.0,
@@ -287,69 +166,7 @@
           },
           "payload_weight": 0.0,
           "state": "landed",
-          "fault": null
-        },
-        {
-          "time": 10.002000000000008,
-          "position": {
-            "x": -38.82899796231979,
-            "y": -20.449169407784076,
-            "z": 2.0
-          },
-          "velocity": {
-            "x": -13.475836972396818,
-            "y": -6.588005608177856,
-            "z": 0.0
-          },
-          "battery": {
-            "remaining_wh": 149.77459444444366,
-            "capacity_wh": 150.0,
-            "remaining_percent": 99.84972962962911
-          },
-          "payload_weight": 0.0,
-          "state": "flying",
-          "fault": null
-        },
-        {
-          "time": 15.007999999999935,
-          "position": {
-            "x": -106.28903784613773,
-            "y": -53.428725482322314,
-            "z": 2.0
-          },
-          "velocity": {
-            "x": -13.47583697239682,
-            "y": -6.588005608177854,
-            "z": 0.0
-          },
-          "battery": {
-            "remaining_wh": 149.41304999999818,
-            "capacity_wh": 150.0,
-            "remaining_percent": 99.60869999999879
-          },
-          "payload_weight": 0.0,
-          "state": "flying",
-          "fault": null
-        },
-        {
-          "time": 20.01399999999966,
-          "position": {
-            "x": -173.74907772995513,
-            "y": -86.40828155686039,
-            "z": 2.0
-          },
-          "velocity": {
-            "x": -13.475836972396825,
-            "y": -6.588005608177847,
-            "z": 0.0
-          },
-          "battery": {
-            "remaining_wh": 149.05150555555247,
-            "capacity_wh": 150.0,
-            "remaining_percent": 99.36767037036832
-          },
-          "payload_weight": 0.0,
-          "state": "flying",
+          "route_status": "idle",
           "fault": null
         }
       ]
@@ -373,9 +190,9 @@
             "z": 2.0
           },
           "velocity": {
-            "x": 0,
-            "y": 0,
-            "z": 0
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
           },
           "battery": {
             "remaining_wh": 140.0,
@@ -384,19 +201,20 @@
           },
           "payload_weight": 0.0,
           "state": "landed",
+          "route_status": "idle",
           "fault": null
         },
         {
-          "time": 5.013000000000004,
+          "time": 5.011000000000003,
           "position": {
             "x": 4.5,
             "y": 0.0,
             "z": 2.0
           },
           "velocity": {
-            "x": 0,
-            "y": 0,
-            "z": 0
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
           },
           "battery": {
             "remaining_wh": 140.0,
@@ -405,69 +223,7 @@
           },
           "payload_weight": 0.0,
           "state": "landed",
-          "fault": null
-        },
-        {
-          "time": 10.002000000000008,
-          "position": {
-            "x": -17.933243684551464,
-            "y": -21.6780994044573,
-            "z": 2.0
-          },
-          "velocity": {
-            "x": -15.820341103350824,
-            "y": -15.287799297924748,
-            "z": 0.0
-          },
-          "battery": {
-            "remaining_wh": 139.88599722222207,
-            "capacity_wh": 140.0,
-            "remaining_percent": 99.91856944444434
-          },
-          "payload_weight": 0.0,
-          "state": "flying",
-          "fault": null
-        },
-        {
-          "time": 15.007999999999935,
-          "position": {
-            "x": -97.12987124792517,
-            "y": -98.20882268986796,
-            "z": 2.0
-          },
-          "velocity": {
-            "x": -15.820341103350811,
-            "y": -15.287799297924764,
-            "z": 0.0
-          },
-          "battery": {
-            "remaining_wh": 139.48829833333306,
-            "capacity_wh": 140.0,
-            "remaining_percent": 99.63449880952362
-          },
-          "payload_weight": 0.0,
-          "state": "flying",
-          "fault": null
-        },
-        {
-          "time": 20.01399999999966,
-          "position": {
-            "x": -150.15445217863052,
-            "y": -173.07946634516995,
-            "z": 2.0
-          },
-          "velocity": {
-            "x": 17.5695514662152,
-            "y": -13.240500794003806,
-            "z": 0.0
-          },
-          "battery": {
-            "remaining_wh": 139.09059944444405,
-            "capacity_wh": 140.0,
-            "remaining_percent": 99.35042817460288
-          },
-          "payload_weight": 0.0,
-          "state": "flying",
+          "route_status": "idle",
           "fault": null
         }
       ]
@@ -491,9 +247,9 @@
             "z": 2.0
           },
           "velocity": {
-            "x": 0,
-            "y": 0,
-            "z": 0
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
           },
           "battery": {
             "remaining_wh": 200.0,
@@ -502,40 +258,20 @@
           },
           "payload_weight": 0.0,
           "state": "landed",
+          "route_status": "idle",
           "fault": null
         },
         {
-          "time": 5.013000000000004,
+          "time": 5.011000000000003,
           "position": {
             "x": 6.0,
             "y": 0.0,
             "z": 2.0
           },
           "velocity": {
-            "x": 0,
-            "y": 0,
-            "z": 0
-          },
-          "battery": {
-            "remaining_wh": 200.0,
-            "capacity_wh": 200.0,
-            "remaining_percent": 100.0
-          },
-          "payload_weight": 0.0,
-          "state": "landed",
-          "fault": null
-        },
-        {
-          "time": 10.002000000000008,
-          "position": {
-            "x": 6.0,
+            "x": 0.0,
             "y": 0.0,
-            "z": 2.0
-          },
-          "velocity": {
-            "x": 0,
-            "y": 0,
-            "z": 0
+            "z": 0.0
           },
           "battery": {
             "remaining_wh": 200.0,
@@ -544,48 +280,7 @@
           },
           "payload_weight": 0.0,
           "state": "landed",
-          "fault": null
-        },
-        {
-          "time": 15.007999999999935,
-          "position": {
-            "x": -34.46864718822367,
-            "y": 36.0966006537329,
-            "z": 2.0
-          },
-          "velocity": {
-            "x": -8.955221772122979,
-            "y": 7.987740795249595,
-            "z": 0.0
-          },
-          "battery": {
-            "remaining_wh": 199.76815999999903,
-            "capacity_wh": 200.0,
-            "remaining_percent": 99.88407999999951
-          },
-          "payload_weight": 0.0,
-          "state": "flying",
-          "fault": null
-        },
-        {
-          "time": 20.01399999999966,
-          "position": {
-            "x": -79.29848737947125,
-            "y": 76.08323107475263,
-            "z": 2.0
-          },
-          "velocity": {
-            "x": -8.955221772122979,
-            "y": 7.987740795249592,
-            "z": 0.0
-          },
-          "battery": {
-            "remaining_wh": 199.51229777777567,
-            "capacity_wh": 200.0,
-            "remaining_percent": 99.75614888888784
-          },
-          "payload_weight": 0.0,
-          "state": "flying",
+          "route_status": "idle",
           "fault": null
         }
       ]
@@ -593,225 +288,99 @@
   ],
   "orders": [
     {
-      "id": "order-101",
+      "id": "p1",
       "destination": {
-        "x": -584.1239762760881,
-        "y": 319.4677349462811,
-        "z": 2.0
-      },
-      "priority": 2,
-      "payload_weight": 1.2,
-      "created_at": 1.0020000000000007,
-      "completed_at": null,
-      "failed_at": null,
-      "status": "in_progress"
-    },
-    {
-      "id": "order-102",
-      "destination": {
-        "x": 853.1178351485748,
-        "y": -26.842912833703167,
-        "z": 2.0
-      },
-      "priority": 2,
-      "payload_weight": 0.9,
-      "created_at": 2.0149999999999975,
-      "completed_at": null,
-      "failed_at": null,
-      "status": "in_progress"
-    },
-    {
-      "id": "order-103",
-      "destination": {
-        "x": 522.8061626118672,
-        "y": -1120.2000754724431,
-        "z": 2.0
-      },
-      "priority": 2,
-      "payload_weight": 1.3,
-      "created_at": 3.019999999999995,
-      "completed_at": null,
-      "failed_at": null,
-      "status": "in_progress"
-    },
-    {
-      "id": "order-104",
-      "destination": {
-        "x": -595.7443450506265,
-        "y": -292.7113997548405,
-        "z": 2.0
-      },
-      "priority": 3,
-      "payload_weight": 1.3,
-      "created_at": 4.020999999999993,
-      "completed_at": null,
-      "failed_at": null,
-      "status": "in_progress"
-    },
-    {
-      "id": "order-105",
-      "destination": {
-        "x": -155.43056533095523,
-        "y": -171.92481275200885,
-        "z": 2.0
-      },
-      "priority": 2,
-      "payload_weight": 0.9,
-      "created_at": 5.029000000000004,
-      "completed_at": null,
-      "failed_at": null,
-      "status": "in_progress"
-    },
-    {
-      "id": "order-106",
-      "destination": {
-        "x": 701.9167116447993,
-        "y": 1133.5737898405312,
-        "z": 2.0
-      },
-      "priority": 1,
-      "payload_weight": 1.9,
-      "created_at": 6.032000000000017,
-      "completed_at": null,
-      "failed_at": null,
-      "status": "in_progress"
-    },
-    {
-      "id": "order-107",
-      "destination": {
-        "x": -163.89384142521044,
-        "y": -162.7253947242591,
-        "z": 2.0
-      },
-      "priority": 3,
-      "payload_weight": 1.2,
-      "created_at": 7.03200000000003,
-      "completed_at": 19.13099999999971,
-      "failed_at": null,
-      "status": "delivered"
-    },
-    {
-      "id": "order-108",
-      "destination": {
-        "x": 1141.7504181016836,
-        "y": -1146.6653597367165,
-        "z": 2.0
-      },
-      "priority": 2,
-      "payload_weight": 1.7,
-      "created_at": 8.04700000000004,
-      "completed_at": null,
-      "failed_at": null,
-      "status": "in_progress"
-    },
-    {
-      "id": "order-109",
-      "destination": {
-        "x": -823.1902771676068,
-        "y": 739.6083729131187,
-        "z": 2.0
-      },
-      "priority": 3,
-      "payload_weight": 1.1,
-      "created_at": 9.047000000000022,
-      "completed_at": null,
-      "failed_at": null,
-      "status": "in_progress"
-    },
-    {
-      "id": "order-110",
-      "destination": {
-        "x": -190.23926083657705,
-        "y": -1189.2341092430233,
-        "z": 2.0
-      },
-      "priority": 1,
-      "payload_weight": 1.7,
-      "created_at": 10.052000000000007,
-      "completed_at": null,
-      "failed_at": null,
-      "status": "in_progress"
-    },
-    {
-      "id": "order-111",
-      "destination": {
-        "x": 804.710151715148,
-        "y": 1136.0102014883566,
-        "z": 2.0
-      },
-      "priority": 3,
-      "payload_weight": 1.0,
-      "created_at": 11.06199999999999,
-      "completed_at": null,
-      "failed_at": null,
-      "status": "pending"
-    },
-    {
-      "id": "order-112",
-      "destination": {
-        "x": -589.6887520885372,
-        "y": 810.1850611912582,
-        "z": 2.0
-      },
-      "priority": 2,
-      "payload_weight": 1.0,
-      "created_at": 12.068999999999976,
-      "completed_at": null,
-      "failed_at": null,
-      "status": "pending"
-    },
-    {
-      "id": "order-113",
-      "destination": {
-        "x": -858.615577244968,
-        "y": 11.024551876309715,
-        "z": 2.0
-      },
-      "priority": 1,
-      "payload_weight": 1.1,
-      "created_at": 13.081999999999962,
-      "completed_at": null,
-      "failed_at": null,
-      "status": "pending"
-    },
-    {
-      "id": "order-114",
-      "destination": {
-        "x": 147.2129911645909,
-        "y": 1010.3859224465721,
-        "z": 2.0
-      },
-      "priority": 3,
-      "payload_weight": 1.6,
-      "created_at": 14.08399999999995,
-      "completed_at": null,
-      "failed_at": null,
-      "status": "pending"
-    },
-    {
-      "id": "order-115",
-      "destination": {
-        "x": -684.1412406180028,
-        "y": 483.1847351401568,
+        "x": 407.3652,
+        "y": -18.8595,
         "z": 2.0
       },
       "priority": 1,
       "payload_weight": 1.5,
-      "created_at": 15.088999999999935,
+      "created_at": 0.0,
+      "completed_at": null,
+      "failed_at": null,
+      "status": "in_progress"
+    },
+    {
+      "id": "p2",
+      "destination": {
+        "x": 207.4545,
+        "y": -154.64790000000002,
+        "z": 2.0
+      },
+      "priority": 1,
+      "payload_weight": 1.5,
+      "created_at": 0.0,
+      "completed_at": null,
+      "failed_at": null,
+      "status": "in_progress"
+    },
+    {
+      "id": "p3",
+      "destination": {
+        "x": -456.3999,
+        "y": -256.48920000000004,
+        "z": 2.0
+      },
+      "priority": 1,
+      "payload_weight": 1.5,
+      "created_at": 0.0,
+      "completed_at": null,
+      "failed_at": null,
+      "status": "dispatched"
+    },
+    {
+      "id": "p4",
+      "destination": {
+        "x": -558.2412,
+        "y": -56.578500000000005,
+        "z": 2.0
+      },
+      "priority": 1,
+      "payload_weight": 1.5,
+      "created_at": 0.0,
+      "completed_at": null,
+      "failed_at": null,
+      "status": "dispatched"
+    },
+    {
+      "id": "p5",
+      "destination": {
+        "x": -214.9983,
+        "y": 452.62800000000004,
+        "z": 2.0
+      },
+      "priority": 1,
+      "payload_weight": 1.5,
+      "created_at": 0.0,
+      "completed_at": null,
+      "failed_at": null,
+      "status": "dispatched"
+    },
+    {
+      "id": "p6",
+      "destination": {
+        "x": 354.5586,
+        "y": 429.9966,
+        "z": 2.0
+      },
+      "priority": 1,
+      "payload_weight": 1.5,
+      "created_at": 0.0,
       "completed_at": null,
       "failed_at": null,
       "status": "pending"
     },
     {
-      "id": "order-116",
+      "id": "p7",
       "destination": {
-        "x": 381.7744658824763,
-        "y": -34.53256372104215,
+        "x": 90.52560000000001,
+        "y": 15.0876,
         "z": 2.0
       },
-      "priority": 2,
-      "payload_weight": 1.9,
-      "created_at": 19.14799999999971,
+      "priority": 1,
+      "payload_weight": 1.5,
+      "created_at": 0.0,
       "completed_at": null,
       "failed_at": null,
       "status": "pending"
@@ -819,194 +388,160 @@
   ],
   "missions": [
     {
-      "id": "mission-1",
-      "mission_number": 1,
-      "created_at": 0.0,
-      "assigned_at": 1.0020000000000007,
-      "completed_at": null,
-      "failed_at": null,
-      "status": "executing",
+      "id": "Light-1-mission-1",
       "vehicle_id": "Light-1",
+      "mission_number": 1,
+      "status": "running",
+      "manager_state": "executing",
+      "ground_phase": "idle",
       "order_ids": [
-        "order-101"
+        "p1"
       ],
-      "route": [
-        {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 2.0
-        },
-        {
-          "x": -584.1239762760881,
-          "y": 319.4677349462811,
-          "z": 2.0
-        },
-        {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 2.0
-        }
-      ],
-      "orders_fulfilled": 0,
-      "current_waypoint": 1
+      "delivered_orders": [],
+      "last_observed_at": 7.535000000000031
     },
     {
-      "id": "mission-2",
-      "mission_number": 1,
-      "created_at": 0.0,
-      "assigned_at": 2.0149999999999975,
-      "completed_at": null,
-      "failed_at": null,
-      "status": "executing",
+      "id": "Standard-2-mission-1",
       "vehicle_id": "Standard-2",
+      "mission_number": 1,
+      "status": "running",
+      "manager_state": "executing",
+      "ground_phase": "idle",
       "order_ids": [
-        "order-102"
+        "p2"
       ],
-      "route": [
-        {
-          "x": 1.5,
-          "y": 0.0,
-          "z": 2.0
-        },
-        {
-          "x": 853.1178351485748,
-          "y": -26.842912833703167,
-          "z": 2.0
-        },
-        {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 2.0
-        }
-      ],
-      "orders_fulfilled": 0,
-      "current_waypoint": 1
+      "delivered_orders": [],
+      "last_observed_at": 7.535000000000031
     },
     {
-      "id": "mission-3",
-      "mission_number": 1,
-      "created_at": 0.0,
-      "assigned_at": 6.431000000000022,
-      "completed_at": null,
-      "failed_at": null,
-      "status": "executing",
+      "id": "Heavy-3-mission-1",
       "vehicle_id": "Heavy-3",
+      "mission_number": 1,
+      "status": "ready",
+      "manager_state": "ready",
+      "ground_phase": "loading",
       "order_ids": [
-        "order-104",
-        "order-103",
-        "order-105",
-        "order-106"
+        "p3"
       ],
-      "route": [
-        {
-          "x": 3.0,
-          "y": 0.0,
-          "z": 2.0
-        },
-        {
-          "x": -595.7443450506265,
-          "y": -292.7113997548405,
-          "z": 2.0
-        },
-        {
-          "x": 522.8061626118672,
-          "y": -1120.2000754724431,
-          "z": 2.0
-        },
-        {
-          "x": -155.43056533095523,
-          "y": -171.92481275200885,
-          "z": 2.0
-        },
-        {
-          "x": 701.9167116447993,
-          "y": 1133.5737898405312,
-          "z": 2.0
-        },
-        {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 2.0
-        }
-      ],
-      "orders_fulfilled": 0,
-      "current_waypoint": 1
+      "delivered_orders": [],
+      "last_observed_at": 7.535000000000031
     },
     {
-      "id": "mission-4",
-      "mission_number": 1,
-      "created_at": 0.0,
-      "assigned_at": 8.197000000000036,
-      "completed_at": null,
-      "failed_at": null,
-      "status": "executing",
+      "id": "Fast-4-mission-1",
       "vehicle_id": "Fast-4",
+      "mission_number": 1,
+      "status": "ready",
+      "manager_state": "ready",
+      "ground_phase": "loading",
       "order_ids": [
-        "order-107",
-        "order-108"
+        "p4"
       ],
-      "route": [
-        {
-          "x": 4.5,
-          "y": 0.0,
-          "z": 2.0
-        },
-        {
-          "x": -163.89384142521044,
-          "y": -162.7253947242591,
-          "z": 2.0
-        },
-        {
-          "x": 1141.7504181016836,
-          "y": -1146.6653597367165,
-          "z": 2.0
-        },
-        {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 2.0
-        }
-      ],
-      "orders_fulfilled": 1,
-      "current_waypoint": 2
+      "delivered_orders": [],
+      "last_observed_at": 7.535000000000031
     },
     {
-      "id": "mission-5",
-      "mission_number": 1,
-      "created_at": 0.0,
-      "assigned_at": 10.134000000000006,
-      "completed_at": null,
-      "failed_at": null,
-      "status": "executing",
+      "id": "Endurance-5-mission-1",
       "vehicle_id": "Endurance-5",
+      "mission_number": 1,
+      "status": "ready",
+      "manager_state": "ready",
+      "ground_phase": "loading",
       "order_ids": [
-        "order-109",
-        "order-110"
+        "p5"
       ],
-      "route": [
-        {
-          "x": 6.0,
-          "y": 0.0,
-          "z": 2.0
-        },
-        {
-          "x": -823.1902771676068,
-          "y": 739.6083729131187,
-          "z": 2.0
-        },
-        {
-          "x": -190.23926083657705,
-          "y": -1189.2341092430233,
-          "z": 2.0
-        },
-        {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 2.0
-        }
-      ],
-      "orders_fulfilled": 0,
-      "current_waypoint": 1
+      "delivered_orders": [],
+      "last_observed_at": 7.535000000000031
+    }
+  ],
+  "events": [
+    {
+      "vehicle_id": "Light-1",
+      "mission_id": "Light-1-mission-1",
+      "time": 0.017,
+      "type": "loading_started",
+      "estimated_wh": 5.0391,
+      "budgeted_wh": 6.2988,
+      "reserve_wh": 15.0
+    },
+    {
+      "vehicle_id": "Standard-2",
+      "mission_id": "Standard-2-mission-1",
+      "time": 2.482,
+      "type": "loading_started",
+      "estimated_wh": 3.5626,
+      "budgeted_wh": 4.4533,
+      "reserve_wh": 15.0
+    },
+    {
+      "vehicle_id": "Heavy-3",
+      "mission_id": "Heavy-3-mission-1",
+      "time": 2.769,
+      "type": "loading_started",
+      "estimated_wh": 8.241,
+      "budgeted_wh": 10.3012,
+      "reserve_wh": 22.5
+    },
+    {
+      "vehicle_id": "Fast-4",
+      "mission_id": "Fast-4-mission-1",
+      "time": 2.971,
+      "type": "loading_started",
+      "estimated_wh": 7.2306,
+      "budgeted_wh": 9.0383,
+      "reserve_wh": 21.0
+    },
+    {
+      "vehicle_id": "Endurance-5",
+      "mission_id": "Endurance-5-mission-1",
+      "time": 3.183,
+      "type": "loading_started",
+      "estimated_wh": 7.083,
+      "budgeted_wh": 8.8537,
+      "reserve_wh": 30.0
+    },
+    {
+      "vehicle_id": "Light-1",
+      "mission_id": "Light-1-mission-1",
+      "time": 5.028,
+      "type": "loading_completed"
+    },
+    {
+      "vehicle_id": "Light-1",
+      "mission_id": "Light-1-mission-1",
+      "time": 5.028,
+      "mission_elapsed_time": 0.0,
+      "type": "mission_started"
+    },
+    {
+      "vehicle_id": "Light-1",
+      "mission_id": "Light-1-mission-1",
+      "time": 5.028,
+      "mission_elapsed_time": 0.0,
+      "type": "leg_started",
+      "index": 0,
+      "action": "deliver"
+    },
+    {
+      "vehicle_id": "Standard-2",
+      "mission_id": "Standard-2-mission-1",
+      "time": 7.484,
+      "type": "loading_completed"
+    },
+    {
+      "vehicle_id": "Standard-2",
+      "mission_id": "Standard-2-mission-1",
+      "time": 7.484,
+      "mission_elapsed_time": 0.0,
+      "type": "mission_started"
+    },
+    {
+      "vehicle_id": "Standard-2",
+      "mission_id": "Standard-2-mission-1",
+      "time": 7.484,
+      "mission_elapsed_time": 0.0,
+      "type": "leg_started",
+      "index": 0,
+      "action": "deliver"
     }
   ]
 }

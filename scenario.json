@@ -19,7 +19,8 @@
   "spawning": {
     "type": "interval",
     "interval": 15.0,
-    "max_active_orders": 15
+    "max_active_orders": 15,
+    "max_delivery_radius": 1500.0
   },
   "telemetry": {
     "enabled": true,
@@ -31,5 +32,13 @@
     "orders": true,
     "missions": true,
     "battery": true
+  },
+  "mission_engine": "v2",
+  "ground_operations": {
+    "loading_time": 5.0,
+    "unloading_time": 3.0,
+    "recharge_threshold": 30.0,
+    "recharge_release_threshold": 80.0,
+    "emergency_threshold": 15.0
   }
 }
