@@ -18,14 +18,14 @@
   "orders": [],
   "spawning": {
     "type": "interval",
-    "interval": 15.0,
-    "max_active_orders": 15,
+    "interval": 5.0,
+    "max_active_orders": 20,
     "max_delivery_radius": 1500.0
   },
   "telemetry": {
     "enabled": true,
-    "output": "telemetry.json",
-    "state_interval": 5.0,
+    "output": "large_fleet_telemetry.json",
+    "state_interval": 10.0,
     "events": true,
     "state": true,
     "vehicles": true,
@@ -35,10 +35,10 @@
   },
   "mission_engine": "v2",
   "ground_operations": {
-    "loading_time": 5.0,
-    "unloading_time": 3.0,
+    "loading_time": 2.0,
+    "unloading_time": 2.0,
     "recharge_threshold": 30.0,
-    "recharge_release_threshold": 80.0,
+    "recharge_release_threshold": 98.0,
     "emergency_threshold": 15.0
   }
 }
