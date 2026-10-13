@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import heapq
 import math
+from itertools import permutations
 
 from flying_aces.core.contracts import *
 from flying_aces.missions.mission import FlightMission, LegAction, MissionLeg
@@ -20,6 +21,44 @@ class MissionPlanner:
         # self.weight_penalty_factor = 0.005    # extra energy per meter per kg carried
         # self.wind_penalty_factor = 0.001      # extra energy per meter per m/s of wind
         self.battery_reserve_margin = 0.85   # only spend this fraction of battery on a plan
+
+    def optimize_route(self, start: Vector3, orders: list[DeliveryOrder], base: Vector3, speed: float = 10.0) -> list[DeliveryOrder]:
+        """Find the shortest delivery sequence, including return to base."""
+        if len(orders) <= 1:
+            return list(orders)
+
+        locations = [start] + [
+            Vector3(o.destination.x, o.destination.y, self.landing_height)
+            for o in orders
+        ] + [Vector3(base.x, base.y, self.landing_height)]
+
+        home_index = len(locations) - 1
+        distances = {}
+
+        def distance(i: int, j: int) -> float:
+            if (i, j) not in distances:
+                try:
+                    route = self.plan_landing_leg(locations[i], locations[j], speed)
+                    distances[i, j] = route.distance
+                except RuntimeError:
+                    distances[i, j] = float("inf")
+            return distances[i, j]
+
+        best_sequence = None
+        best_distance = float("inf")
+
+        for sequence in permutations(range(1, home_index)):
+            circuit = (0, *sequence, home_index)
+            total = sum(distance(a, b) for a, b in zip(circuit, circuit[1:]))
+
+            if total < best_distance:
+                best_distance = total
+                best_sequence = sequence
+
+        if best_sequence is None:
+            raise RuntimeError("No feasible delivery circuit found")
+
+        return [orders[i - 1] for i in best_sequence]
 
     def plan_route(self, start: Vector3, destination: Vector3) -> Route:
         if self.route_is_clear(Route([
@@ -260,31 +299,26 @@ class MissionPlanner:
 
         return Route(waypoints)
 
-
     # def estimate_multi_stop_energy(
     #     self,
     #     start: Vector3,
     #     stops_with_weights: list[tuple[Vector3, float]],
+    #     vehicle: VehicleState,
     # ) -> float:
-    #     """
-    #     Energy for start -> stop1 -> stop2 -> ... Each entry's weight is the payload
-    #     still on board *while flying that leg* (i.e. already excluding anything
-    #     dropped off on an earlier leg).
-    #     """
     #     wind = self.environment.get_wind()
     #     position = start
     #     total = 0.0
 
     #     for stop, weight_on_leg in stops_with_weights:
     #         leg = self.plan_route(position, stop)
-    #         total += self._estimate_leg_energy(
-    #             battery=vehicle_battery,
+
+    #         total += vehicle.battery.estimate_energy(
     #             distance=leg.distance,
     #             payload_weight=weight_on_leg,
     #             wind=wind,
-    #             cruise_speed=cruise_speed,
+    #             cruise_speed=vehicle.cruise_speed,
     #         )
-            
+
     #         position = stop
 
     #     return total
@@ -300,7 +334,7 @@ class MissionPlanner:
         total = 0.0
 
         for stop, weight_on_leg in stops_with_weights:
-            leg = self.plan_route(position, stop)
+            leg = self.plan_landing_leg(position, stop, speed=vehicle.cruise_speed)
 
             total += vehicle.battery.estimate_energy(
                 distance=leg.distance,
@@ -309,19 +343,53 @@ class MissionPlanner:
                 cruise_speed=vehicle.cruise_speed,
             )
 
-            position = stop
+            position = leg.waypoints[-1].position
 
         return total
-
-    def plan_delivery_batch(
-        self,
-        vehicle_state: VehicleState,
-        candidate_orders: list[DeliveryOrder],
-        base: Vector3,
-    ) -> tuple[list[DeliveryOrder], Optional[Route]]:
-        capacity = vehicle_state.payload_capacity
+    # def plan_delivery_batch(
+    #     self,
+    #     vehicle_state: VehicleState,
+    #     candidate_orders: list[DeliveryOrder],
+    #     base: Vector3,
+    # ) -> tuple[list[DeliveryOrder], Optional[Route]]:
+    #     capacity = vehicle_state.payload_capacity
         
-        # Sort candidates so highest priority number comes first
+    #     # Sort candidates so highest priority number comes first
+    #     remaining = sorted(candidate_orders, key=lambda o: o.priority, reverse=True)
+
+    #     batch: list[DeliveryOrder] = []
+    #     total_weight = 0.0
+
+    #     for candidate in remaining:
+    #         if total_weight + candidate.payload_weight > capacity:
+    #             continue
+
+    #         trial_batch = batch + [candidate]
+    #         stops_with_weights = self._stops_with_remaining_weight(trial_batch, base)
+            
+    #         try:
+    #             energy = self.estimate_multi_stop_energy(
+    #                 vehicle_state.position, stops_with_weights, vehicle_state
+    #             )
+    #         except RuntimeError:
+    #             continue
+
+    #         if energy <= vehicle_state.battery.remaining_energy() * self.battery_reserve_margin:
+    #             batch.append(candidate)
+    #             total_weight += candidate.payload_weight
+
+    #     if not batch:
+    #         return [], None
+
+    #     try:
+    #         stops = [order.destination for order in batch] + [base]
+    #         route = self.plan_multi_stop_route(vehicle_state.position, stops)
+    #         return batch, route
+    #     except RuntimeError:
+    #         return [], None
+
+    def plan_delivery_batch(self, vehicle_state: VehicleState, candidate_orders: list[DeliveryOrder], base: Vector3,) -> tuple[list[DeliveryOrder], Optional[Route]]:
+        capacity = vehicle_state.payload_capacity
         remaining = sorted(candidate_orders, key=lambda o: o.priority, reverse=True)
 
         batch: list[DeliveryOrder] = []
@@ -332,9 +400,13 @@ class MissionPlanner:
                 continue
 
             trial_batch = batch + [candidate]
-            stops_with_weights = self._stops_with_remaining_weight(trial_batch, base)
-            
+
             try:
+                trial_batch = self.optimize_route(
+                    vehicle_state.position, trial_batch, base, self.speed
+                )
+
+                stops_with_weights = self._stops_with_remaining_weight(trial_batch, base)
                 energy = self.estimate_multi_stop_energy(
                     vehicle_state.position, stops_with_weights, vehicle_state
                 )
@@ -342,7 +414,7 @@ class MissionPlanner:
                 continue
 
             if energy <= vehicle_state.battery.remaining_energy() * self.battery_reserve_margin:
-                batch.append(candidate)
+                batch = trial_batch
                 total_weight += candidate.payload_weight
 
         if not batch:
@@ -354,7 +426,7 @@ class MissionPlanner:
             return batch, route
         except RuntimeError:
             return [], None
-
+        
     @staticmethod
     def _stops_with_remaining_weight(
         batch: list[DeliveryOrder],
@@ -404,10 +476,22 @@ class MissionPlanner:
             raise RuntimeError("V2 route failed obstacle clearance validation")
         return route
 
-    def plan_mission(self, mission_id: str, start: Vector3,
-                     orders: list[DeliveryOrder], base: Vector3, speed: float = 10.0) -> FlightMission:
+    def plan_mission(self, mission_id: str, start: Vector3, orders: list[DeliveryOrder], base: Vector3, speed: float = 10.0) -> FlightMission:
         if not orders:
             raise ValueError("At least one delivery order is required")
+
+        print(
+            f"[MissionPlanner] start={start}, base={base}, "
+            f"orders={[o.id for o in orders]}"
+        )
+        
+        original = [o.id for o in orders]
+        orders = self.optimize_route(start, orders, base, speed)
+        optimized = [o.id for o in orders]
+
+        if original != optimized:
+            print(f"[RouteOptimizer] Reordered: {original} -> {optimized}")
+
         legs: list[MissionLeg] = []
         current = start
         for order in orders:
