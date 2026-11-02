@@ -100,9 +100,41 @@
 <ref refid="01a97fa8-70f6-11ec-aabc-f47b099bf663"/>
 </reflist>
 </ownedDiagram>
+<ownedType>
+<reflist>
+<ref refid="a57112ee-d70f-11f1-b402-c88a9af48dae"/>
+<ref refid="26531493-d712-11f1-9205-c88a9af48dae"/>
+<ref refid="a607e732-d712-11f1-8818-c88a9af48dae"/>
+<ref refid="78af0772-d713-11f1-85f3-c88a9af48dae"/>
+<ref refid="7fecb86a-d713-11f1-8b84-c88a9af48dae"/>
+<ref refid="9b05af08-d713-11f1-af67-c88a9af48dae"/>
+<ref refid="c118102d-d713-11f1-beae-c88a9af48dae"/>
+<ref refid="15462d8b-d714-11f1-9dcb-c88a9af48dae"/>
+<ref refid="6012a7f7-d714-11f1-b24d-c88a9af48dae"/>
+<ref refid="ae07036a-d714-11f1-9f43-c88a9af48dae"/>
+<ref refid="d47397ee-d714-11f1-ba8f-c88a9af48dae"/>
+<ref refid="38b7df6a-d715-11f1-ad6e-c88a9af48dae"/>
+</reflist>
+</ownedType>
 <owningPackage>
 <ref refid="58d6c2e8-66f8-11ec-b4c8-0456e5e540ed"/>
 </owningPackage>
+<packagedElement>
+<reflist>
+<ref refid="a57112ee-d70f-11f1-b402-c88a9af48dae"/>
+<ref refid="26531493-d712-11f1-9205-c88a9af48dae"/>
+<ref refid="a607e732-d712-11f1-8818-c88a9af48dae"/>
+<ref refid="78af0772-d713-11f1-85f3-c88a9af48dae"/>
+<ref refid="7fecb86a-d713-11f1-8b84-c88a9af48dae"/>
+<ref refid="9b05af08-d713-11f1-af67-c88a9af48dae"/>
+<ref refid="c118102d-d713-11f1-beae-c88a9af48dae"/>
+<ref refid="15462d8b-d714-11f1-9dcb-c88a9af48dae"/>
+<ref refid="6012a7f7-d714-11f1-b24d-c88a9af48dae"/>
+<ref refid="ae07036a-d714-11f1-9f43-c88a9af48dae"/>
+<ref refid="d47397ee-d714-11f1-ba8f-c88a9af48dae"/>
+<ref refid="38b7df6a-d715-11f1-ad6e-c88a9af48dae"/>
+</reflist>
+</packagedElement>
 </UML:Package>
 <UML:Package id="07bbcb9a-70f5-11ec-aabc-f47b099bf663">
 <name>
@@ -253,6 +285,31 @@
 <name>
 <val>Concept Requirements</val>
 </name>
+<ownedPresentation>
+<reflist>
+<ref refid="a571ccef-d70f-11f1-b977-c88a9af48dae"/>
+<ref refid="2653e1bd-d712-11f1-ad36-c88a9af48dae"/>
+<ref refid="a60871e9-d712-11f1-b858-c88a9af48dae"/>
+<ref refid="78afeb63-d713-11f1-952a-c88a9af48dae"/>
+<ref refid="7fed7b85-d713-11f1-b197-c88a9af48dae"/>
+<ref refid="9b0657a6-d713-11f1-aea7-c88a9af48dae"/>
+<ref refid="c11898ed-d713-11f1-92bb-c88a9af48dae"/>
+<ref refid="15470ef2-d714-11f1-b3e9-c88a9af48dae"/>
+<ref refid="60132e3f-d714-11f1-92b0-c88a9af48dae"/>
+<ref refid="ae07a057-d714-11f1-9437-c88a9af48dae"/>
+<ref refid="d47471b0-d714-11f1-b657-c88a9af48dae"/>
+<ref refid="38b8dda2-d715-11f1-a1a5-c88a9af48dae"/>
+<ref refid="6ce3bdee-d712-11f1-8061-c88a9af48dae"/>
+<ref refid="284b7c5f-d713-11f1-9afd-c88a9af48dae"/>
+<ref refid="b9c0e8b4-d713-11f1-a67d-c88a9af48dae"/>
+<ref refid="f6fa336d-d713-11f1-8d83-c88a9af48dae"/>
+<ref refid="3e5cac54-d714-11f1-b948-c88a9af48dae"/>
+<ref refid="81b6b29d-d714-11f1-8223-c88a9af48dae"/>
+<ref refid="c3ad0b47-d714-11f1-9758-c88a9af48dae"/>
+<ref refid="f3bee098-d714-11f1-a3cf-c88a9af48dae"/>
+<ref refid="577761d0-d715-11f1-b465-c88a9af48dae"/>
+</reflist>
+</ownedPresentation>
 <presentation>
 <reflist>
 <ref refid="fa9aa4f4-f1a4-11ed-8ed8-f47b099bf663"/>
@@ -450,9 +507,9 @@
 <reflist>
 <ref refid="f939e1b1-d23a-11f1-9e36-f24006edae7d"/>
 <ref refid="1166cb1a-d23e-11f1-99ae-f24006edae7d"/>
+<ref refid="1a6e933f-d23e-11f1-b40e-f24006edae7d"/>
 <ref refid="22fce98c-d23e-11f1-920e-f24006edae7d"/>
 <ref refid="2eae5b36-d23e-11f1-bc89-f24006edae7d"/>
-<ref refid="1a6e933f-d23e-11f1-b40e-f24006edae7d"/>
 <ref refid="7e08f5ca-d23f-11f1-8501-f24006edae7d"/>
 <ref refid="84c47067-d23f-11f1-a0d0-f24006edae7d"/>
 <ref refid="8cf4dd5d-d23f-11f1-8ddd-f24006edae7d"/>
@@ -1272,7 +1329,7 @@
 </SysML:Block>
 <SysML:BlockItem id="f939e1b1-d23a-11f1-9e36-f24006edae7d">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 639.0, 463.0)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 682.0, 431.5)</val>
 </matrix>
 <top-left>
 <val>(57.0, 25.0)</val>
@@ -1451,7 +1508,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 627.0, 297.0)</val>
 </matrix>
 <points>
-<val>[(80.58108108108104, -125.5), (169.0, 191.0)]</val>
+<val>[(80.58108108108104, -125.5), (212.0, 159.5)]</val>
 </points>
 <head-connection>
 <ref refid="1a6e933f-d23e-11f1-b40e-f24006edae7d"/>
@@ -1533,7 +1590,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 881.0, 296.0)</val>
 </matrix>
 <points>
-<val>[(62.0, -123.37499999999997), (-68.5, 192.0)]</val>
+<val>[(62.0, -123.37499999999997), (-25.5, 160.5)]</val>
 </points>
 <head-connection>
 <ref refid="1166cb1a-d23e-11f1-99ae-f24006edae7d"/>
@@ -1615,7 +1672,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 1159.0, 309.0)</val>
 </matrix>
 <points>
-<val>[(42.74864864864867, -94.5), (-321.54391891891896, 179.0)]</val>
+<val>[(42.74864864864867, -94.5), (-278.54391891891896, 147.5)]</val>
 </points>
 <head-connection>
 <ref refid="22fce98c-d23e-11f1-920e-f24006edae7d"/>
@@ -1697,7 +1754,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 1439.0, 302.0)</val>
 </matrix>
 <points>
-<val>[(-79.5, 60.5), (-581.0, 186.0)]</val>
+<val>[(-79.5, 60.5), (-538.0, 154.5)]</val>
 </points>
 <head-connection>
 <ref refid="2eae5b36-d23e-11f1-bc89-f24006edae7d"/>
@@ -1923,7 +1980,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 507.0, 288.0)</val>
 </matrix>
 <points>
-<val>[(23.0, -47.0), (254.0, 200.0)]</val>
+<val>[(23.0, -47.0), (297.0, 168.5)]</val>
 </points>
 <head-connection>
 <ref refid="7e08f5ca-d23f-11f1-8501-f24006edae7d"/>
@@ -2005,7 +2062,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 403.0, 328.0)</val>
 </matrix>
 <points>
-<val>[(-10.0, 0.0), (293.0, 160.0)]</val>
+<val>[(-10.0, 0.0), (336.0, 128.5)]</val>
 </points>
 <head-connection>
 <ref refid="84c47067-d23f-11f1-a0d0-f24006edae7d"/>
@@ -2037,7 +2094,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 365.0, 638.0)</val>
 </matrix>
 <points>
-<val>[(-10.0, 11.0), (331.0, -91.0)]</val>
+<val>[(-10.0, 11.0), (374.0, -122.5)]</val>
 </points>
 <head-connection>
 <ref refid="995b3809-d23f-11f1-8e9b-f24006edae7d"/>
@@ -2069,7 +2126,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 353.0, 460.021809399736)</val>
 </matrix>
 <points>
-<val>[(2.0, 0.0), (343.0, 63.99999999999994)]</val>
+<val>[(2.0, 0.0), (386.0, 32.49999999999994)]</val>
 </points>
 <head-connection>
 <ref refid="8cf4dd5d-d23f-11f1-8ddd-f24006edae7d"/>
@@ -2291,7 +2348,7 @@
 <val>100.0</val>
 </width>
 <height>
-<val>58.0</val>
+<val>60.0</val>
 </height>
 <diagram>
 <ref refid="a4c74139-d57a-11ed-b606-f47b099bf663"/>
@@ -2323,7 +2380,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 929.2446808510638, 509.0)</val>
 </matrix>
 <points>
-<val>[(-0.24468085106377657, 0.0), (340.2553191489362, 1.5)]</val>
+<val>[(42.75531914893622, -31.5), (340.2553191489362, 1.5)]</val>
 </points>
 <head-connection>
 <ref refid="f939e1b1-d23a-11f1-9e36-f24006edae7d"/>
@@ -2405,7 +2462,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 929.2446808510638, 548.0)</val>
 </matrix>
 <points>
-<val>[(-0.24468085106377657, 0.0), (320.7553191489362, 88.0)]</val>
+<val>[(42.75531914893622, -31.5), (320.7553191489362, 88.0)]</val>
 </points>
 <head-connection>
 <ref refid="f939e1b1-d23a-11f1-9e36-f24006edae7d"/>
@@ -2523,7 +2580,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 926.2446808510638, 585.0)</val>
 </matrix>
 <points>
-<val>[(2.7553191489362234, 0.0), (263.37630822311667, 147.0)]</val>
+<val>[(45.75531914893622, -31.5), (263.37630822311667, 147.0)]</val>
 </points>
 <head-connection>
 <ref refid="f939e1b1-d23a-11f1-9e36-f24006edae7d"/>
@@ -2609,7 +2666,7 @@
 <val>100.0</val>
 </width>
 <height>
-<val>75.0</val>
+<val>78.0</val>
 </height>
 <diagram>
 <ref refid="a4c74139-d57a-11ed-b606-f47b099bf663"/>
@@ -2677,7 +2734,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 865.2446808510638, 591.0)</val>
 </matrix>
 <points>
-<val>[(0.0, 2.0), (113.75531914893622, 256.0)]</val>
+<val>[(43.0, -29.5), (113.75531914893622, 256.0)]</val>
 </points>
 <head-connection>
 <ref refid="f939e1b1-d23a-11f1-9e36-f24006edae7d"/>
@@ -2838,7 +2895,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 764.2446808510638, 594.0)</val>
 </matrix>
 <points>
-<val>[(0.0, -1.0), (-125.11968085106378, 223.0)]</val>
+<val>[(43.0, -32.5), (-125.11968085106378, 223.0)]</val>
 </points>
 <head-connection>
 <ref refid="f939e1b1-d23a-11f1-9e36-f24006edae7d"/>
@@ -2897,5 +2954,732 @@
 <ref refid="170c0b91-d262-11f1-9aeb-f24006edae7d"/>
 </type>
 </UML:Property>
+<SysML:Requirement id="a57112ee-d70f-11f1-b402-c88a9af48dae">
+<name>
+<val>FR-01 Delivery Time Limit (20 Mins)</val>
+</name>
+<owningPackage>
+<ref refid="012edaba-70f5-11ec-aabc-f47b099bf663"/>
+</owningPackage>
+<package>
+<ref refid="012edaba-70f5-11ec-aabc-f47b099bf663"/>
+</package>
+<presentation>
+<reflist>
+<ref refid="a571ccef-d70f-11f1-b977-c88a9af48dae"/>
+</reflist>
+</presentation>
+</SysML:Requirement>
+<SysML:RequirementItem id="a571ccef-d70f-11f1-b977-c88a9af48dae">
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, -90.32246275810024, 224.5562299620681)</val>
+</matrix>
+<top-left>
+<val>(0.0, 0.0)</val>
+</top-left>
+<width>
+<val>100.0</val>
+</width>
+<height>
+<val>114.0</val>
+</height>
+<diagram>
+<ref refid="01a97fa8-70f6-11ec-aabc-f47b099bf663"/>
+</diagram>
+<subject>
+<ref refid="a57112ee-d70f-11f1-b402-c88a9af48dae"/>
+</subject>
+</SysML:RequirementItem>
+<SysML:Requirement id="26531493-d712-11f1-9205-c88a9af48dae">
+<name>
+<val>FR-02       The drone shall lower the pizza using a tether from a safe height</val>
+</name>
+<owningPackage>
+<ref refid="012edaba-70f5-11ec-aabc-f47b099bf663"/>
+</owningPackage>
+<package>
+<ref refid="012edaba-70f5-11ec-aabc-f47b099bf663"/>
+</package>
+<presentation>
+<reflist>
+<ref refid="2653e1bd-d712-11f1-ad36-c88a9af48dae"/>
+</reflist>
+</presentation>
+</SysML:Requirement>
+<SysML:RequirementItem id="2653e1bd-d712-11f1-ad36-c88a9af48dae">
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, -369.32246275810024, 384.0362299620681)</val>
+</matrix>
+<top-left>
+<val>(0.0, 0.0)</val>
+</top-left>
+<width>
+<val>100.0</val>
+</width>
+<height>
+<val>168.0</val>
+</height>
+<diagram>
+<ref refid="01a97fa8-70f6-11ec-aabc-f47b099bf663"/>
+</diagram>
+<subject>
+<ref refid="26531493-d712-11f1-9205-c88a9af48dae"/>
+</subject>
+</SysML:RequirementItem>
+<SysML:RefineItem id="6ce3bdee-d712-11f1-8061-c88a9af48dae">
+<diagram>
+<ref refid="01a97fa8-70f6-11ec-aabc-f47b099bf663"/>
+</diagram>
+<horizontal>
+<val>False</val>
+</horizontal>
+<orthogonal>
+<val>False</val>
+</orthogonal>
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, -277.32246275810024, 469.5562299620681)</val>
+</matrix>
+<points>
+<val>[(8.0, 2.9600000000000364), (98.0, 2.9600000000000364), (98.0, -327.0)]</val>
+</points>
+<head-connection>
+<ref refid="2653e1bd-d712-11f1-ad36-c88a9af48dae"/>
+</head-connection>
+</SysML:RefineItem>
+<SysML:Requirement id="a607e732-d712-11f1-8818-c88a9af48dae">
+<name>
+<val>FR-03        The user shall be able to track the location/status of their order through the app</val>
+</name>
+<owningPackage>
+<ref refid="012edaba-70f5-11ec-aabc-f47b099bf663"/>
+</owningPackage>
+<package>
+<ref refid="012edaba-70f5-11ec-aabc-f47b099bf663"/>
+</package>
+<presentation>
+<reflist>
+<ref refid="a60871e9-d712-11f1-b858-c88a9af48dae"/>
+</reflist>
+</presentation>
+</SysML:Requirement>
+<SysML:RequirementItem id="a60871e9-d712-11f1-b858-c88a9af48dae">
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 419.67753724189976, 188.55622996206807)</val>
+</matrix>
+<top-left>
+<val>(0.0, 0.0)</val>
+</top-left>
+<width>
+<val>100.0</val>
+</width>
+<height>
+<val>204.0</val>
+</height>
+<diagram>
+<ref refid="01a97fa8-70f6-11ec-aabc-f47b099bf663"/>
+</diagram>
+<subject>
+<ref refid="a607e732-d712-11f1-8818-c88a9af48dae"/>
+</subject>
+</SysML:RequirementItem>
+<SysML:RefineItem id="284b7c5f-d713-11f1-9afd-c88a9af48dae">
+<diagram>
+<ref refid="01a97fa8-70f6-11ec-aabc-f47b099bf663"/>
+</diagram>
+<horizontal>
+<val>False</val>
+</horizontal>
+<orthogonal>
+<val>False</val>
+</orthogonal>
+<subject>
+<ref refid="8bb58eaa-d713-11f1-9bc2-c88a9af48dae"/>
+</subject>
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 423.67753724189976, 281.55622996206813)</val>
+</matrix>
+<points>
+<val>[(-4.0, -1.0000000000000568), (-99.0, 0.0), (-99.0, -130.00000000000003)]</val>
+</points>
+<head-connection>
+<ref refid="a60871e9-d712-11f1-b858-c88a9af48dae"/>
+</head-connection>
+<tail-connection>
+<ref refid="7fed7b85-d713-11f1-b197-c88a9af48dae"/>
+</tail-connection>
+</SysML:RefineItem>
+<SysML:Requirement id="78af0772-d713-11f1-85f3-c88a9af48dae">
+<name>
+<val>Drone</val>
+</name>
+<owningPackage>
+<ref refid="012edaba-70f5-11ec-aabc-f47b099bf663"/>
+</owningPackage>
+<package>
+<ref refid="012edaba-70f5-11ec-aabc-f47b099bf663"/>
+</package>
+<presentation>
+<reflist>
+<ref refid="78afeb63-d713-11f1-952a-c88a9af48dae"/>
+</reflist>
+</presentation>
+<targetDirectedRelationshipPropertyPath_>
+<reflist>
+<ref refid="83e1ffae-d714-11f1-86d2-c88a9af48dae"/>
+</reflist>
+</targetDirectedRelationshipPropertyPath_>
+</SysML:Requirement>
+<SysML:RequirementItem id="78afeb63-d713-11f1-952a-c88a9af48dae">
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, -229.32246275810024, 64.5562299620681)</val>
+</matrix>
+<top-left>
+<val>(0.0, 0.0)</val>
+</top-left>
+<width>
+<val>100.0</val>
+</width>
+<height>
+<val>60.0</val>
+</height>
+<diagram>
+<ref refid="01a97fa8-70f6-11ec-aabc-f47b099bf663"/>
+</diagram>
+<subject>
+<ref refid="78af0772-d713-11f1-85f3-c88a9af48dae"/>
+</subject>
+</SysML:RequirementItem>
+<SysML:Requirement id="7fecb86a-d713-11f1-8b84-c88a9af48dae">
+<name>
+<val>App/Customer Interface</val>
+</name>
+<owningPackage>
+<ref refid="012edaba-70f5-11ec-aabc-f47b099bf663"/>
+</owningPackage>
+<package>
+<ref refid="012edaba-70f5-11ec-aabc-f47b099bf663"/>
+</package>
+<presentation>
+<reflist>
+<ref refid="7fed7b85-d713-11f1-b197-c88a9af48dae"/>
+</reflist>
+</presentation>
+<targetDirectedRelationshipPropertyPath_>
+<reflist>
+<ref refid="8bb58eaa-d713-11f1-9bc2-c88a9af48dae"/>
+</reflist>
+</targetDirectedRelationshipPropertyPath_>
+</SysML:Requirement>
+<SysML:RequirementItem id="7fed7b85-d713-11f1-b197-c88a9af48dae">
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 274.6775372418998, 55.5562299620681)</val>
+</matrix>
+<top-left>
+<val>(0.0, 0.0)</val>
+</top-left>
+<width>
+<val>100.0</val>
+</width>
+<height>
+<val>96.0</val>
+</height>
+<diagram>
+<ref refid="01a97fa8-70f6-11ec-aabc-f47b099bf663"/>
+</diagram>
+<subject>
+<ref refid="7fecb86a-d713-11f1-8b84-c88a9af48dae"/>
+</subject>
+</SysML:RequirementItem>
+<SysML:Refine id="8bb58eaa-d713-11f1-9bc2-c88a9af48dae">
+<presentation>
+<reflist>
+<ref refid="284b7c5f-d713-11f1-9afd-c88a9af48dae"/>
+</reflist>
+</presentation>
+<sourceContext>
+<ref refid="a607e732-d712-11f1-8818-c88a9af48dae"/>
+</sourceContext>
+<targetContext>
+<ref refid="7fecb86a-d713-11f1-8b84-c88a9af48dae"/>
+</targetContext>
+</SysML:Refine>
+<SysML:Requirement id="9b05af08-d713-11f1-af67-c88a9af48dae">
+<name>
+<val>Operations</val>
+</name>
+<owningPackage>
+<ref refid="012edaba-70f5-11ec-aabc-f47b099bf663"/>
+</owningPackage>
+<package>
+<ref refid="012edaba-70f5-11ec-aabc-f47b099bf663"/>
+</package>
+<presentation>
+<reflist>
+<ref refid="9b0657a6-d713-11f1-aea7-c88a9af48dae"/>
+</reflist>
+</presentation>
+<targetDirectedRelationshipPropertyPath_>
+<reflist>
+<ref refid="bad3504c-d713-11f1-bfbd-c88a9af48dae"/>
+<ref refid="f7eea278-d713-11f1-a843-c88a9af48dae"/>
+<ref refid="c4cbf6dd-d714-11f1-9130-c88a9af48dae"/>
+</reflist>
+</targetDirectedRelationshipPropertyPath_>
+</SysML:Requirement>
+<SysML:RequirementItem id="9b0657a6-d713-11f1-aea7-c88a9af48dae">
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 32.50747188544017, 64.5562299620681)</val>
+</matrix>
+<top-left>
+<val>(0.0, 0.0)</val>
+</top-left>
+<width>
+<val>100.0</val>
+</width>
+<height>
+<val>60.0</val>
+</height>
+<diagram>
+<ref refid="01a97fa8-70f6-11ec-aabc-f47b099bf663"/>
+</diagram>
+<subject>
+<ref refid="9b05af08-d713-11f1-af67-c88a9af48dae"/>
+</subject>
+</SysML:RequirementItem>
+<SysML:RefineItem id="b9c0e8b4-d713-11f1-a67d-c88a9af48dae">
+<diagram>
+<ref refid="01a97fa8-70f6-11ec-aabc-f47b099bf663"/>
+</diagram>
+<horizontal>
+<val>False</val>
+</horizontal>
+<orthogonal>
+<val>False</val>
+</orthogonal>
+<subject>
+<ref refid="bad3504c-d713-11f1-bfbd-c88a9af48dae"/>
+</subject>
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 11.507471885440168, 280.06227790859487)</val>
+</matrix>
+<points>
+<val>[(-1.8299346435404118, -1.0120958930535835), (71.0, -1.0120958930535835), (71.0, -155.50604794652676)]</val>
+</points>
+<head-connection>
+<ref refid="a571ccef-d70f-11f1-b977-c88a9af48dae"/>
+</head-connection>
+<tail-connection>
+<ref refid="9b0657a6-d713-11f1-aea7-c88a9af48dae"/>
+</tail-connection>
+</SysML:RefineItem>
+<SysML:Refine id="bad3504c-d713-11f1-bfbd-c88a9af48dae">
+<presentation>
+<reflist>
+<ref refid="b9c0e8b4-d713-11f1-a67d-c88a9af48dae"/>
+</reflist>
+</presentation>
+<sourceContext>
+<ref refid="a57112ee-d70f-11f1-b402-c88a9af48dae"/>
+</sourceContext>
+<targetContext>
+<ref refid="9b05af08-d713-11f1-af67-c88a9af48dae"/>
+</targetContext>
+</SysML:Refine>
+<SysML:Requirement id="c118102d-d713-11f1-beae-c88a9af48dae">
+<name>
+<val>NFR-01      The deliveries shall cost the business no more than $5.00 each</val>
+</name>
+<owningPackage>
+<ref refid="012edaba-70f5-11ec-aabc-f47b099bf663"/>
+</owningPackage>
+<package>
+<ref refid="012edaba-70f5-11ec-aabc-f47b099bf663"/>
+</package>
+<presentation>
+<reflist>
+<ref refid="c11898ed-d713-11f1-92bb-c88a9af48dae"/>
+</reflist>
+</presentation>
+</SysML:Requirement>
+<SysML:RequirementItem id="c11898ed-d713-11f1-92bb-c88a9af48dae">
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, -90.32246275810024, 385.5562299620681)</val>
+</matrix>
+<top-left>
+<val>(0.0, 0.0)</val>
+</top-left>
+<width>
+<val>100.0</val>
+</width>
+<height>
+<val>168.0</val>
+</height>
+<diagram>
+<ref refid="01a97fa8-70f6-11ec-aabc-f47b099bf663"/>
+</diagram>
+<subject>
+<ref refid="c118102d-d713-11f1-beae-c88a9af48dae"/>
+</subject>
+</SysML:RequirementItem>
+<SysML:RefineItem id="f6fa336d-d713-11f1-8d83-c88a9af48dae">
+<diagram>
+<ref refid="01a97fa8-70f6-11ec-aabc-f47b099bf663"/>
+</diagram>
+<horizontal>
+<val>False</val>
+</horizontal>
+<orthogonal>
+<val>False</val>
+</orthogonal>
+<subject>
+<ref refid="f7eea278-d713-11f1-a843-c88a9af48dae"/>
+</subject>
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 3.507471885440168, 481.0501820155414)</val>
+</matrix>
+<points>
+<val>[(6.170065356459588, 1.5199999999998681), (79.0, 1.5199999999998681), (79.0, -356.4939520534733)]</val>
+</points>
+<head-connection>
+<ref refid="c11898ed-d713-11f1-92bb-c88a9af48dae"/>
+</head-connection>
+<tail-connection>
+<ref refid="9b0657a6-d713-11f1-aea7-c88a9af48dae"/>
+</tail-connection>
+</SysML:RefineItem>
+<SysML:Refine id="f7eea278-d713-11f1-a843-c88a9af48dae">
+<presentation>
+<reflist>
+<ref refid="f6fa336d-d713-11f1-8d83-c88a9af48dae"/>
+</reflist>
+</presentation>
+<sourceContext>
+<ref refid="c118102d-d713-11f1-beae-c88a9af48dae"/>
+</sourceContext>
+<targetContext>
+<ref refid="9b05af08-d713-11f1-af67-c88a9af48dae"/>
+</targetContext>
+</SysML:Refine>
+<SysML:Requirement id="15462d8b-d714-11f1-9dcb-c88a9af48dae">
+<name>
+<val>NFR-02         The communication with the remote operation center shall have a dual failover over cell networks</val>
+</name>
+<owningPackage>
+<ref refid="012edaba-70f5-11ec-aabc-f47b099bf663"/>
+</owningPackage>
+<package>
+<ref refid="012edaba-70f5-11ec-aabc-f47b099bf663"/>
+</package>
+<presentation>
+<reflist>
+<ref refid="15470ef2-d714-11f1-b3e9-c88a9af48dae"/>
+</reflist>
+</presentation>
+</SysML:Requirement>
+<SysML:RequirementItem id="15470ef2-d714-11f1-b3e9-c88a9af48dae">
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, -96.32246275810024, 606.0501820155413)</val>
+</matrix>
+<top-left>
+<val>(0.0, 0.0)</val>
+</top-left>
+<width>
+<val>115.0</val>
+</width>
+<height>
+<val>222.0</val>
+</height>
+<diagram>
+<ref refid="01a97fa8-70f6-11ec-aabc-f47b099bf663"/>
+</diagram>
+<subject>
+<ref refid="15462d8b-d714-11f1-9dcb-c88a9af48dae"/>
+</subject>
+</SysML:RequirementItem>
+<SysML:RefineItem id="3e5cac54-d714-11f1-b948-c88a9af48dae">
+<diagram>
+<ref refid="01a97fa8-70f6-11ec-aabc-f47b099bf663"/>
+</diagram>
+<horizontal>
+<val>False</val>
+</horizontal>
+<orthogonal>
+<val>False</val>
+</orthogonal>
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 25.780990257621966, 705.0501820155414)</val>
+</matrix>
+<points>
+<val>[(-7.103453015722209, 8.943299712646649), (56.7264816278182, 8.943299712646649), (56.7264816278182, -222.48000000000013)]</val>
+</points>
+<head-connection>
+<ref refid="15470ef2-d714-11f1-b3e9-c88a9af48dae"/>
+</head-connection>
+</SysML:RefineItem>
+<SysML:Requirement id="6012a7f7-d714-11f1-b24d-c88a9af48dae">
+<name>
+<val>NFR-03    The pizza pod shall keep the pizza heated to the ideal range to avoid soggy pizza.</val>
+</name>
+<owningPackage>
+<ref refid="012edaba-70f5-11ec-aabc-f47b099bf663"/>
+</owningPackage>
+<package>
+<ref refid="012edaba-70f5-11ec-aabc-f47b099bf663"/>
+</package>
+<presentation>
+<reflist>
+<ref refid="60132e3f-d714-11f1-92b0-c88a9af48dae"/>
+</reflist>
+</presentation>
+</SysML:Requirement>
+<SysML:RequirementItem id="60132e3f-d714-11f1-92b0-c88a9af48dae">
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, -369.32246275810024, 618.993481728188)</val>
+</matrix>
+<top-left>
+<val>(0.0, 0.0)</val>
+</top-left>
+<width>
+<val>100.0</val>
+</width>
+<height>
+<val>204.0</val>
+</height>
+<diagram>
+<ref refid="01a97fa8-70f6-11ec-aabc-f47b099bf663"/>
+</diagram>
+<subject>
+<ref refid="6012a7f7-d714-11f1-b24d-c88a9af48dae"/>
+</subject>
+</SysML:RequirementItem>
+<SysML:RefineItem id="81b6b29d-d714-11f1-8223-c88a9af48dae">
+<diagram>
+<ref refid="01a97fa8-70f6-11ec-aabc-f47b099bf663"/>
+</diagram>
+<horizontal>
+<val>False</val>
+</horizontal>
+<orthogonal>
+<val>False</val>
+</orthogonal>
+<subject>
+<ref refid="83e1ffae-d714-11f1-86d2-c88a9af48dae"/>
+</subject>
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, -200.49252811455983, 908.9934817281883)</val>
+</matrix>
+<points>
+<val>[(-68.82993464354041, -183.00000000000023), (21.170065356459588, -183.00000000000023), (21.170065356459588, -784.4372517661202)]</val>
+</points>
+<head-connection>
+<ref refid="60132e3f-d714-11f1-92b0-c88a9af48dae"/>
+</head-connection>
+<tail-connection>
+<ref refid="78afeb63-d713-11f1-952a-c88a9af48dae"/>
+</tail-connection>
+</SysML:RefineItem>
+<SysML:Refine id="83e1ffae-d714-11f1-86d2-c88a9af48dae">
+<name>
+<val></val>
+</name>
+<presentation>
+<reflist>
+<ref refid="81b6b29d-d714-11f1-8223-c88a9af48dae"/>
+</reflist>
+</presentation>
+<sourceContext>
+<ref refid="6012a7f7-d714-11f1-b24d-c88a9af48dae"/>
+</sourceContext>
+<targetContext>
+<ref refid="78af0772-d713-11f1-85f3-c88a9af48dae"/>
+</targetContext>
+</SysML:Refine>
+<SysML:Requirement id="ae07036a-d714-11f1-9f43-c88a9af48dae">
+<name>
+<val>CON-01    The Drone shall remain below 400 feet above ground level</val>
+</name>
+<owningPackage>
+<ref refid="012edaba-70f5-11ec-aabc-f47b099bf663"/>
+</owningPackage>
+<package>
+<ref refid="012edaba-70f5-11ec-aabc-f47b099bf663"/>
+</package>
+<presentation>
+<reflist>
+<ref refid="ae07a057-d714-11f1-9437-c88a9af48dae"/>
+</reflist>
+</presentation>
+</SysML:Requirement>
+<SysML:RequirementItem id="ae07a057-d714-11f1-9437-c88a9af48dae">
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 140.50747188544017, 206.55622996206813)</val>
+</matrix>
+<top-left>
+<val>(0.0, 0.0)</val>
+</top-left>
+<width>
+<val>100.0</val>
+</width>
+<height>
+<val>150.0</val>
+</height>
+<diagram>
+<ref refid="01a97fa8-70f6-11ec-aabc-f47b099bf663"/>
+</diagram>
+<subject>
+<ref refid="ae07036a-d714-11f1-9f43-c88a9af48dae"/>
+</subject>
+</SysML:RequirementItem>
+<SysML:RefineItem id="c3ad0b47-d714-11f1-9758-c88a9af48dae">
+<diagram>
+<ref refid="01a97fa8-70f6-11ec-aabc-f47b099bf663"/>
+</diagram>
+<horizontal>
+<val>False</val>
+</horizontal>
+<orthogonal>
+<val>False</val>
+</orthogonal>
+<subject>
+<ref refid="c4cbf6dd-d714-11f1-9130-c88a9af48dae"/>
+</subject>
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 124.50747188544017, 292.9934817281881)</val>
+</matrix>
+<points>
+<val>[(16.0, -13.94329971264682), (-42.0, -13.94329971264682), (-42.0, -168.43725176612)]</val>
+</points>
+<head-connection>
+<ref refid="ae07a057-d714-11f1-9437-c88a9af48dae"/>
+</head-connection>
+<tail-connection>
+<ref refid="9b0657a6-d713-11f1-aea7-c88a9af48dae"/>
+</tail-connection>
+</SysML:RefineItem>
+<SysML:Refine id="c4cbf6dd-d714-11f1-9130-c88a9af48dae">
+<presentation>
+<reflist>
+<ref refid="c3ad0b47-d714-11f1-9758-c88a9af48dae"/>
+</reflist>
+</presentation>
+<sourceContext>
+<ref refid="ae07036a-d714-11f1-9f43-c88a9af48dae"/>
+</sourceContext>
+<targetContext>
+<ref refid="9b05af08-d713-11f1-af67-c88a9af48dae"/>
+</targetContext>
+</SysML:Refine>
+<SysML:Requirement id="d47397ee-d714-11f1-ba8f-c88a9af48dae">
+<name>
+<val>CON-02       Deliveries shall be limited to a 3-mile radius of the store</val>
+</name>
+<owningPackage>
+<ref refid="012edaba-70f5-11ec-aabc-f47b099bf663"/>
+</owningPackage>
+<package>
+<ref refid="012edaba-70f5-11ec-aabc-f47b099bf663"/>
+</package>
+<presentation>
+<reflist>
+<ref refid="d47471b0-d714-11f1-b657-c88a9af48dae"/>
+</reflist>
+</presentation>
+</SysML:Requirement>
+<SysML:RequirementItem id="d47471b0-d714-11f1-b657-c88a9af48dae">
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 140.50747188544017, 421.99348172818804)</val>
+</matrix>
+<top-left>
+<val>(0.0, 0.0)</val>
+</top-left>
+<width>
+<val>100.0</val>
+</width>
+<height>
+<val>150.0</val>
+</height>
+<diagram>
+<ref refid="01a97fa8-70f6-11ec-aabc-f47b099bf663"/>
+</diagram>
+<subject>
+<ref refid="d47397ee-d714-11f1-ba8f-c88a9af48dae"/>
+</subject>
+</SysML:RequirementItem>
+<SysML:RefineItem id="f3bee098-d714-11f1-a3cf-c88a9af48dae">
+<diagram>
+<ref refid="01a97fa8-70f6-11ec-aabc-f47b099bf663"/>
+</diagram>
+<horizontal>
+<val>False</val>
+</horizontal>
+<orthogonal>
+<val>False</val>
+</orthogonal>
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 137.50747188544017, 496.9934817281881)</val>
+</matrix>
+<points>
+<val>[(3.0, -14.42329971264678), (-55.0, -14.42329971264678)]</val>
+</points>
+<head-connection>
+<ref refid="d47471b0-d714-11f1-b657-c88a9af48dae"/>
+</head-connection>
+</SysML:RefineItem>
+<SysML:Requirement id="38b7df6a-d715-11f1-ad6e-c88a9af48dae">
+<name>
+<val>CON-03 Deliveries shall occur during permitted weather and time</val>
+</name>
+<owningPackage>
+<ref refid="012edaba-70f5-11ec-aabc-f47b099bf663"/>
+</owningPackage>
+<package>
+<ref refid="012edaba-70f5-11ec-aabc-f47b099bf663"/>
+</package>
+<presentation>
+<reflist>
+<ref refid="38b8dda2-d715-11f1-a1a5-c88a9af48dae"/>
+</reflist>
+</presentation>
+</SysML:Requirement>
+<SysML:RequirementItem id="38b8dda2-d715-11f1-a1a5-c88a9af48dae">
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 140.50747188544017, 631.0501820155414)</val>
+</matrix>
+<top-left>
+<val>(0.0, 0.0)</val>
+</top-left>
+<width>
+<val>100.0</val>
+</width>
+<height>
+<val>168.0</val>
+</height>
+<diagram>
+<ref refid="01a97fa8-70f6-11ec-aabc-f47b099bf663"/>
+</diagram>
+<subject>
+<ref refid="38b7df6a-d715-11f1-ad6e-c88a9af48dae"/>
+</subject>
+</SysML:RequirementItem>
+<SysML:RefineItem id="577761d0-d715-11f1-b465-c88a9af48dae">
+<diagram>
+<ref refid="01a97fa8-70f6-11ec-aabc-f47b099bf663"/>
+</diagram>
+<horizontal>
+<val>False</val>
+</horizontal>
+<orthogonal>
+<val>False</val>
+</orthogonal>
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 138.50747188544017, 713.993481728188)</val>
+</matrix>
+<points>
+<val>[(2.0, 0.0), (-56.0, 0.0)]</val>
+</points>
+<head-connection>
+<ref refid="38b8dda2-d715-11f1-a1a5-c88a9af48dae"/>
+</head-connection>
+</SysML:RefineItem>
 </model>
 </gaphor>
