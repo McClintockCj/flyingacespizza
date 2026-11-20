@@ -1,0 +1,30 @@
+{
+  "name": "sanity_route_order",
+  "trials": 1,
+  "seed": 513,
+  "scenario": {
+    "duration_min": 60,
+    "drain_min": 30,
+    "orders_per_hour": 0,
+    "radius_m": 2000,
+    "wind_mps": 0,
+    "max_order_kg": 1,
+    "fixed_wind": {"x_mps": 0, "y_mps": 0},
+    "fixed_orders": [
+      {"created_min": 0, "x_m": 1200, "y_m": 0, "kg": 1, "prep_duration_min": 1},
+      {"created_min": 0, "x_m": 300, "y_m": 0, "kg": 1, "prep_duration_min": 1}
+    ],
+    "delivery_deadline_min": 5,
+    "freshness_deadline_min": 4
+  },
+  "baseline": {
+    "preset": "standard_four",
+    "overrides": {
+      "fleet": {"vehicles": [{"type": "standard", "count": 1, "cruise_mps": 15, "payload_kg": 5, "battery_wh": 100, "cruise_w": 240, "hover_w": 280, "climb_w": 350, "charge_w": 150}]},
+      "policy": {"max_batch": 2, "batch_wait_min": 1},
+      "strategies": {"batching": "timed"}
+    }
+  },
+  "treatments": ["strategies.routing"],
+  "alternatives": [{"name": "farthest_first", "overrides": {"strategies": {"routing": "farthest_first"}}}]
+}

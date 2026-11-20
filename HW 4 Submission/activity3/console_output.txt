@@ -1,0 +1,96 @@
+{
+  "name": "sanity_route_order",
+  "trials": 1,
+  "variants": {
+    "baseline": {
+      "orders": 2,
+      "delivered": 2,
+      "delivery_rate": 1.0,
+      "on_time_rate": 1.0,
+      "freshness_rate": 1.0,
+      "mean_energy_per_delivery_wh": 10.408333333333333,
+      "mean_shift_utilization": 0.09444444444444443,
+      "mean_shift_p95_delivery_min": 4.245833333333333
+    },
+    "farthest_first": {
+      "orders": 2,
+      "delivered": 2,
+      "delivery_rate": 1.0,
+      "on_time_rate": 0.5,
+      "freshness_rate": 0.5,
+      "mean_energy_per_delivery_wh": 10.548333333333334,
+      "mean_shift_utilization": 0.09444444444444443,
+      "mean_shift_p95_delivery_min": 5.245833333333333
+    }
+  },
+  "paired_differences": {
+    "farthest_first": {
+      "delivered": {
+        "mean_delta": 0,
+        "se": null,
+        "approx_95pct_ci": null,
+        "paired_trials": 1
+      },
+      "failed": {
+        "mean_delta": 0,
+        "se": null,
+        "approx_95pct_ci": null,
+        "paired_trials": 1
+      },
+      "unfinished": {
+        "mean_delta": 0,
+        "se": null,
+        "approx_95pct_ci": null,
+        "paired_trials": 1
+      },
+      "on_time": {
+        "mean_delta": -1,
+        "se": null,
+        "approx_95pct_ci": null,
+        "paired_trials": 1
+      },
+      "fresh_on_time": {
+        "mean_delta": -1,
+        "se": null,
+        "approx_95pct_ci": null,
+        "paired_trials": 1
+      },
+      "delivery_mean_min": {
+        "mean_delta": 1.0,
+        "se": null,
+        "approx_95pct_ci": null,
+        "paired_trials": 1
+      },
+      "delivery_p95_min": {
+        "mean_delta": 1.0,
+        "se": null,
+        "approx_95pct_ci": null,
+        "paired_trials": 1
+      },
+      "food_age_p95_min": {
+        "mean_delta": 1.0,
+        "se": null,
+        "approx_95pct_ci": null,
+        "paired_trials": 1
+      },
+      "energy_per_delivery_wh": {
+        "mean_delta": 0.14000000000000057,
+        "se": null,
+        "approx_95pct_ci": null,
+        "paired_trials": 1
+      },
+      "missions": {
+        "mean_delta": 0,
+        "se": null,
+        "approx_95pct_ci": null,
+        "paired_trials": 1
+      },
+      "utilization": {
+        "mean_delta": 0.0,
+        "se": null,
+        "approx_95pct_ci": null,
+        "paired_trials": 1
+      }
+    }
+  }
+}

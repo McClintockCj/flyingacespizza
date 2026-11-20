@@ -1,0 +1,38 @@
+{
+  "name": "sanity_route_order",
+  "seed": 513,
+  "trials": 1,
+  "scenario": {
+    "duration_min": 60,
+    "drain_min": 30,
+    "orders_per_hour": 0,
+    "radius_m": 2000,
+    "wind_mps": 0,
+    "max_order_kg": 1,
+    "fixed_wind": {
+      "x_mps": 0,
+      "y_mps": 0
+    },
+    "fixed_orders": [
+      {
+        "created_min": 0,
+        "x_m": 1200,
+        "y_m": 0,
+        "kg": 1,
+        "prep_duration_min": 1
+      },
+      {
+        "created_min": 0,
+        "x_m": 300,
+        "y_m": 0,
+        "kg": 1,
+        "prep_duration_min": 1
+      }
+    ],
+    "delivery_deadline_min": 5,
+    "freshness_deadline_min": 4
+  },
+  "declared_treatments": [
+    "strategies.routing"
+  ]
+}
