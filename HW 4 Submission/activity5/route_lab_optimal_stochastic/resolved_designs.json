@@ -1,0 +1,88 @@
+{
+  "baseline": {
+    "config": {
+      "fleet": {
+        "vehicles": [
+          {
+            "type": "standard",
+            "count": 1,
+            "cruise_mps": 15,
+            "payload_kg": 5,
+            "battery_wh": 100,
+            "cruise_w": 240,
+            "hover_w": 280,
+            "climb_w": 350,
+            "charge_w": 150
+          }
+        ]
+      },
+      "operations": {
+        "kitchen_slots": 4,
+        "prep_min": 5.0,
+        "delivery_service_min": 0.75,
+        "turnaround_min": 1.0,
+        "flight_overhead_min": 0.5,
+        "charge_target_fraction": 1.0,
+        "reserve_fraction": 0.15
+      },
+      "strategies": {
+        "kitchen": "fifo",
+        "batching": "timed",
+        "routing": "nearest_neighbor",
+        "dispatch": "first_feasible",
+        "flight": "vector_wind",
+        "energy": "phase_power",
+        "charging": "constant_power"
+      },
+      "policy": {
+        "max_batch": 4,
+        "batch_wait_min": 1
+      }
+    },
+    "changed_paths": []
+  },
+  "shortest_total": {
+    "config": {
+      "fleet": {
+        "vehicles": [
+          {
+            "type": "standard",
+            "count": 1,
+            "cruise_mps": 15,
+            "payload_kg": 5,
+            "battery_wh": 100,
+            "cruise_w": 240,
+            "hover_w": 280,
+            "climb_w": 350,
+            "charge_w": 150
+          }
+        ]
+      },
+      "operations": {
+        "kitchen_slots": 4,
+        "prep_min": 5.0,
+        "delivery_service_min": 0.75,
+        "turnaround_min": 1.0,
+        "flight_overhead_min": 0.5,
+        "charge_target_fraction": 1.0,
+        "reserve_fraction": 0.15
+      },
+      "strategies": {
+        "kitchen": "fifo",
+        "batching": "timed",
+        "routing": "shortest_total",
+        "dispatch": "first_feasible",
+        "flight": "vector_wind",
+        "energy": "phase_power",
+        "charging": "constant_power"
+      },
+      "policy": {
+        "max_batch": 4,
+        "batch_wait_min": 1
+      }
+    },
+    "changed_paths": [
+      "strategies.routing"
+    ]
+  }
+}

@@ -1,0 +1,320 @@
+{
+  "baseline": {
+    "events": [
+      {
+        "time_min": 0.0,
+        "event": "arrived",
+        "order": 0
+      },
+      {
+        "time_min": 0.0,
+        "event": "prep_start",
+        "order": 0
+      },
+      {
+        "time_min": 0.0,
+        "event": "arrived",
+        "order": 1
+      },
+      {
+        "time_min": 0.0,
+        "event": "prep_start",
+        "order": 1
+      },
+      {
+        "time_min": 0.0,
+        "event": "arrived",
+        "order": 2
+      },
+      {
+        "time_min": 0.0,
+        "event": "prep_start",
+        "order": 2
+      },
+      {
+        "time_min": 0.0,
+        "event": "arrived",
+        "order": 3
+      },
+      {
+        "time_min": 0.0,
+        "event": "prep_start",
+        "order": 3
+      },
+      {
+        "time_min": 1.0,
+        "event": "ready",
+        "order": 0
+      },
+      {
+        "time_min": 1.0,
+        "event": "ready",
+        "order": 1
+      },
+      {
+        "time_min": 1.0,
+        "event": "ready",
+        "order": 2
+      },
+      {
+        "time_min": 1.0,
+        "event": "ready",
+        "order": 3
+      },
+      {
+        "time_min": 1.0,
+        "event": "launched",
+        "vehicle": "standard-1",
+        "orders": [
+          3,
+          0,
+          1,
+          2
+        ],
+        "energy_wh": 44.36369113517743
+      },
+      {
+        "time_min": 3.145806,
+        "event": "delivered",
+        "order": 3,
+        "vehicle": "standard-1"
+      },
+      {
+        "time_min": 5.162668,
+        "event": "delivered",
+        "order": 0,
+        "vehicle": "standard-1"
+      },
+      {
+        "time_min": 6.721569,
+        "event": "delivered",
+        "order": 1,
+        "vehicle": "standard-1"
+      },
+      {
+        "time_min": 9.22839,
+        "event": "delivered",
+        "order": 2,
+        "vehicle": "standard-1"
+      },
+      {
+        "time_min": 10.985211,
+        "event": "returned",
+        "vehicle": "standard-1",
+        "charge_wh": 55.63630886482257
+      },
+      {
+        "time_min": 29.730687,
+        "event": "available",
+        "vehicle": "standard-1"
+      }
+    ],
+    "missions": [
+      {
+        "vehicle": "standard-1",
+        "started": 1.0,
+        "returned": 10.985210943361583,
+        "orders": [
+          3,
+          0,
+          1,
+          2
+        ],
+        "energy_wh": 44.36369113517743
+      }
+    ],
+    "orders": [
+      {
+        "id": 0,
+        "created": 0.0,
+        "x": -1000.0,
+        "y": 100.0,
+        "kg": 1.0,
+        "prep_duration": 1.0
+      },
+      {
+        "id": 1,
+        "created": 0.0,
+        "x": -800.0,
+        "y": -600.0,
+        "kg": 1.0,
+        "prep_duration": 1.0
+      },
+      {
+        "id": 2,
+        "created": 0.0,
+        "x": -1300.0,
+        "y": 900.0,
+        "kg": 1.0,
+        "prep_duration": 1.0
+      },
+      {
+        "id": 3,
+        "created": 0.0,
+        "x": -100.0,
+        "y": 800.0,
+        "kg": 1.0,
+        "prep_duration": 1.0
+      }
+    ]
+  },
+  "shortest_total": {
+    "events": [
+      {
+        "time_min": 0.0,
+        "event": "arrived",
+        "order": 0
+      },
+      {
+        "time_min": 0.0,
+        "event": "prep_start",
+        "order": 0
+      },
+      {
+        "time_min": 0.0,
+        "event": "arrived",
+        "order": 1
+      },
+      {
+        "time_min": 0.0,
+        "event": "prep_start",
+        "order": 1
+      },
+      {
+        "time_min": 0.0,
+        "event": "arrived",
+        "order": 2
+      },
+      {
+        "time_min": 0.0,
+        "event": "prep_start",
+        "order": 2
+      },
+      {
+        "time_min": 0.0,
+        "event": "arrived",
+        "order": 3
+      },
+      {
+        "time_min": 0.0,
+        "event": "prep_start",
+        "order": 3
+      },
+      {
+        "time_min": 1.0,
+        "event": "ready",
+        "order": 0
+      },
+      {
+        "time_min": 1.0,
+        "event": "ready",
+        "order": 1
+      },
+      {
+        "time_min": 1.0,
+        "event": "ready",
+        "order": 2
+      },
+      {
+        "time_min": 1.0,
+        "event": "ready",
+        "order": 3
+      },
+      {
+        "time_min": 1.0,
+        "event": "launched",
+        "vehicle": "standard-1",
+        "orders": [
+          1,
+          0,
+          2,
+          3
+        ],
+        "energy_wh": 38.74418380999702
+      },
+      {
+        "time_min": 3.361111,
+        "event": "delivered",
+        "order": 1,
+        "vehicle": "standard-1"
+      },
+      {
+        "time_min": 4.920012,
+        "event": "delivered",
+        "order": 0,
+        "vehicle": "standard-1"
+      },
+      {
+        "time_min": 6.619346,
+        "event": "delivered",
+        "order": 2,
+        "vehicle": "standard-1"
+      },
+      {
+        "time_min": 8.707301,
+        "event": "delivered",
+        "order": 3,
+        "vehicle": "standard-1"
+      },
+      {
+        "time_min": 9.603107,
+        "event": "returned",
+        "vehicle": "standard-1",
+        "charge_wh": 61.25581619000298
+      },
+      {
+        "time_min": 26.100781,
+        "event": "available",
+        "vehicle": "standard-1"
+      }
+    ],
+    "missions": [
+      {
+        "vehicle": "standard-1",
+        "started": 1.0,
+        "returned": 9.603107329076543,
+        "orders": [
+          1,
+          0,
+          2,
+          3
+        ],
+        "energy_wh": 38.74418380999702
+      }
+    ],
+    "orders": [
+      {
+        "id": 0,
+        "created": 0.0,
+        "x": -1000.0,
+        "y": 100.0,
+        "kg": 1.0,
+        "prep_duration": 1.0
+      },
+      {
+        "id": 1,
+        "created": 0.0,
+        "x": -800.0,
+        "y": -600.0,
+        "kg": 1.0,
+        "prep_duration": 1.0
+      },
+      {
+        "id": 2,
+        "created": 0.0,
+        "x": -1300.0,
+        "y": 900.0,
+        "kg": 1.0,
+        "prep_duration": 1.0
+      },
+      {
+        "id": 3,
+        "created": 0.0,
+        "x": -100.0,
+        "y": 800.0,
+        "kg": 1.0,
+        "prep_duration": 1.0
+      }
+    ]
+  }
+}

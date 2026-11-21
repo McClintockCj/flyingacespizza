@@ -1,0 +1,129 @@
+{
+  "name": "route_lab_stochastic",
+  "trials": 100,
+  "variants": {
+    "baseline": {
+      "orders": 800,
+      "delivered": 745,
+      "delivery_rate": 0.93125,
+      "on_time_rate": 0.59125,
+      "freshness_rate": 0.58,
+      "mean_energy_per_delivery_wh": 14.95204255931635,
+      "mean_shift_utilization": 0.4759143731766603,
+      "mean_shift_p95_delivery_min": 27.002112076790848
+    },
+    "shortest_total": {
+      "orders": 800,
+      "delivered": 748,
+      "delivery_rate": 0.935,
+      "on_time_rate": 0.58125,
+      "freshness_rate": 0.5775,
+      "mean_energy_per_delivery_wh": 14.883431764623055,
+      "mean_shift_utilization": 0.4741136204583732,
+      "mean_shift_p95_delivery_min": 26.486575079265315
+    }
+  },
+  "paired_differences": {
+    "shortest_total": {
+      "delivered": {
+        "mean_delta": 0.03,
+        "se": 0.022270150335361366,
+        "approx_95pct_ci": [
+          -0.013649494657308275,
+          0.07364949465730827
+        ],
+        "paired_trials": 100
+      },
+      "failed": {
+        "mean_delta": 0,
+        "se": 0.0,
+        "approx_95pct_ci": [
+          0.0,
+          0.0
+        ],
+        "paired_trials": 100
+      },
+      "unfinished": {
+        "mean_delta": -0.03,
+        "se": 0.022270150335361366,
+        "approx_95pct_ci": [
+          -0.07364949465730827,
+          0.013649494657308275
+        ],
+        "paired_trials": 100
+      },
+      "on_time": {
+        "mean_delta": -0.08,
+        "se": 0.061430752671096045,
+        "approx_95pct_ci": [
+          -0.20040427523534826,
+          0.040404275235348244
+        ],
+        "paired_trials": 100
+      },
+      "fresh_on_time": {
+        "mean_delta": -0.02,
+        "se": 0.06663635674617904,
+        "approx_95pct_ci": [
+          -0.15060725922251092,
+          0.11060725922251093
+        ],
+        "paired_trials": 100
+      },
+      "delivery_mean_min": {
+        "mean_delta": 0.2849106003835748,
+        "se": 0.044389254103116914,
+        "approx_95pct_ci": [
+          0.19790766234146565,
+          0.371913538425684
+        ],
+        "paired_trials": 100
+      },
+      "delivery_p95_min": {
+        "mean_delta": -0.5155369975255334,
+        "se": 0.12039944947572186,
+        "approx_95pct_ci": [
+          -0.7515199184979482,
+          -0.2795540765531186
+        ],
+        "paired_trials": 100
+      },
+      "food_age_p95_min": {
+        "mean_delta": -0.49552109106149833,
+        "se": 0.11858008636681752,
+        "approx_95pct_ci": [
+          -0.7279380603404606,
+          -0.263104121782536
+        ],
+        "paired_trials": 100
+      },
+      "energy_per_delivery_wh": {
+        "mean_delta": -0.06861079469329635,
+        "se": 0.040862089218449485,
+        "approx_95pct_ci": [
+          -0.14870048956145734,
+          0.011478900174864637
+        ],
+        "paired_trials": 100
+      },
+      "missions": {
+        "mean_delta": 0.02,
+        "se": 0.014070529413628968,
+        "approx_95pct_ci": [
+          -0.007578237650712777,
+          0.04757823765071278
+        ],
+        "paired_trials": 100
+      },
+      "utilization": {
+        "mean_delta": -0.0018007527182871113,
+        "se": 0.001043895819161203,
+        "approx_95pct_ci": [
+          -0.003846788523843069,
+          0.00024528308726884645
+        ],
+        "paired_trials": 100
+      }
+    }
+  }
+}

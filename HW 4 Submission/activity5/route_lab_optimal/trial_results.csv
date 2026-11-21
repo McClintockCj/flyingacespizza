@@ -1,0 +1,3 @@
+trial,seed,variant,wind_x,wind_y,orders_total,delivered,failed,unfinished,on_time,fresh_on_time,delivery_mean_min,delivery_p95_min,food_age_p95_min,energy_per_delivery_wh,missions,utilization,cost_per_delivery
+0,13434906867386617416,baseline,0.0,0.0,4,4,0,0,4,4,6.064608384043646,8.85236688269845,7.852366882698449,11.090922783794358,1,0.18308684905602637,
+0,13434906867386617416,shortest_total,0.0,0.0,4,4,0,0,4,4,5.9019425482574706,8.394107669619055,7.394107669619055,9.686045952499255,1,0.16005178881794238,

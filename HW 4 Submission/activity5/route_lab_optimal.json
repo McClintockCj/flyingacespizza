@@ -1,0 +1,33 @@
+{
+  "name": "route_lab_optimal",
+  "trials": 1,
+  "seed": 513,
+  "scenario": {
+    "duration_min": 60,
+    "drain_min": 30,
+    "orders_per_hour": 0,
+    "radius_m": 2500,
+    "wind_mps": 0,
+    "max_order_kg": 1,
+    "fixed_wind": {"x_mps": 0, "y_mps": 0},
+    "fixed_orders": [
+      {"created_min": 0, "x_m": -1000, "y_m": 100, "kg": 1, "prep_duration_min": 1},
+      {"created_min": 0, "x_m": -800, "y_m": -600, "kg": 1, "prep_duration_min": 1},
+      {"created_min": 0, "x_m": -1300, "y_m": 900, "kg": 1, "prep_duration_min": 1},
+      {"created_min": 0, "x_m": -100, "y_m": 800, "kg": 1, "prep_duration_min": 1}
+    ],
+    "delivery_deadline_min": 20,
+    "freshness_deadline_min": 15
+  },
+  "baseline": {
+    "preset": "standard_four",
+    "overrides": {
+      "fleet": {"vehicles": [{"type": "standard", "count": 1, "cruise_mps": 15, "payload_kg": 5, "battery_wh": 100, "cruise_w": 240, "hover_w": 280, "climb_w": 350, "charge_w": 150}]},
+      "operations": {"kitchen_slots": 4},
+      "policy": {"max_batch": 4, "batch_wait_min": 1},
+      "strategies": {"batching": "timed"}
+    }
+  },
+  "treatments": ["strategies.routing"],
+  "alternatives": [{"name": "shortest_total", "overrides": {"strategies": {"routing": "shortest_total"}}}]
+}

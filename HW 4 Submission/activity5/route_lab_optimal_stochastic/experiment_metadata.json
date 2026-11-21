@@ -1,0 +1,18 @@
+{
+  "name": "route_lab_stochastic",
+  "seed": 513,
+  "trials": 100,
+  "scenario": {
+    "duration_min": 60,
+    "drain_min": 30,
+    "orders_per_hour": 8,
+    "radius_m": 1800,
+    "wind_mps": 3,
+    "max_order_kg": 1,
+    "delivery_deadline_min": 20,
+    "freshness_deadline_min": 15
+  },
+  "declared_treatments": [
+    "strategies.routing"
+  ]
+}
